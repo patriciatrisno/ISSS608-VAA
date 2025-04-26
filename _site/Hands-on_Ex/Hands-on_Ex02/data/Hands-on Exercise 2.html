@@ -214,8 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p class="text-body-secondary">
-In this exercise, we will move beyond basic ggplot2 usage to examine its more advanced capabilities, focusing on techniques to create more sophisticated and informative visualizations
-</p>
+</p><p>In this exercise, we will move beyond basic ggplot2 usage to examine its more advanced capabilities, focusing on techniques to create more sophisticated and informative visualizations</p>
+<p></p>
 <section id="pre-work" class="level1">
 <h1>Pre-Work</h1>
 <p><em>Before we dive into the advanced ggplot2 techniques, we need to ensure that the required R packages are installed and loaded into our working environment. We’ll use the&nbsp;`pacman`&nbsp;package for this, which simplifies the process of managing R packages.</em></p>
@@ -286,10 +286,10 @@ In this exercise, we will move beyond basic ggplot2 usage to examine its more ad
 </div>
 </div>
 <p><strong>Figure: 1</strong></p>
-<strong>Insights:</strong>
+<p><strong>Insights:</strong></p>
 <p class="text-success">
-<em>In this initial scatter plot, each data point representing a student’s Maths and English scores is labeled with their unique <code>ID</code>. However, due to the relatively large number of data points concentrated in certain areas of the plot, there is significant&nbsp;<strong>overlap of the labels</strong>. This overlapping makes it difficult to clearly identify each point and read its corresponding <code>ID</code>, ultimately hindering the interpretability of the visualization. The clutter caused by the overlapping labels obscures the underlying distribution of the data.</em>
-</p>
+</p><p><em>In this initial scatter plot, each data point representing a student’s Maths and English scores is labeled with their unique <code>ID</code>. However, due to the relatively large number of data points concentrated in certain areas of the plot, there is significant&nbsp;<strong>overlap of the labels</strong>. This overlapping makes it difficult to clearly identify each point and read its corresponding <code>ID</code>, ultimately hindering the interpretability of the visualization. The clutter caused by the overlapping labels obscures the underlying distribution of the data.</em></p>
+<p></p>
 <p><strong>Improved Plot using&nbsp;<code>geom_label_repel()</code></strong></p>
 <p>To address the issue of overlapping labels, we can utilize the&nbsp;<code>geom_label_repel()</code> function from the <code>ggrepel</code> package. This geom intelligently repositions labels to minimize overlap, making the plot much cleaner and easier to read.</p>
 <div class="cell">
@@ -319,10 +319,10 @@ In this exercise, we will move beyond basic ggplot2 usage to examine its more ad
 <p><strong>Figure: 2</strong></p>
 <p><strong>Note:</strong> The&nbsp;<code>geom_label_repel()</code>&nbsp;function has its own internal logic to position labels in a way that minimizes overlap. While we have retained the&nbsp;<code>hjust</code>&nbsp;and&nbsp;<code>vjust</code>&nbsp;arguments here to provide an initial nudge to the label positions,&nbsp;<code>geom_label_repel()</code>will further adjust these positions to avoid collisions with other labels and data points.</p>
 <p><strong>Easier Summary:</strong>&nbsp;The <code>hjust</code> and <code>vjust</code> arguments in <code>geom_label()</code> offer more manual control over the initial placement of labels. In contrast, <code>geom_label_repel()</code> employs an automatic algorithm to strategically position labels, effectively preventing them from overlapping and enhancing the readability of the plot.</p>
-<strong>Insights:</strong>
+<p><strong>Insights:</strong></p>
 <p class="text-success">
-<em>By using <code>geom_label_repel()</code>, the labels are now intelligently distributed around the data points. This significantly reduces the visual clutter and makes it much easier to associate each label (student <code>ID</code>) with its corresponding position on the scatter plot. The underlying patterns and the relationship between Maths and English scores become clearer as the labels no longer obscure the data. While some labels might be slightly further from their points with connecting lines, the overall readability and interpretability of the plot are greatly improved, especially in dense areas of data.</em>
-</p>
+</p><p><em>By using <code>geom_label_repel()</code>, the labels are now intelligently distributed around the data points. This significantly reduces the visual clutter and makes it much easier to associate each label (student <code>ID</code>) with its corresponding position on the scatter plot. The underlying patterns and the relationship between Maths and English scores become clearer as the labels no longer obscure the data. While some labels might be slightly further from their points with connecting lines, the overall readability and interpretability of the plot are greatly improved, especially in dense areas of data.</em></p>
+<p></p>
 </section>
 </section>
 <section id="beyond-basic-ggplot2-themes" class="level1">
@@ -355,8 +355,8 @@ In this exercise, we will move beyond basic ggplot2 usage to examine its more ad
 <p><strong>Using <code>theme_light()</code></strong></p>
 <p>The <code>theme_light()</code> applied here provides a clean and readable background with subtle grid lines, making it easier to focus on the distribution of the data.</p>
 <p class="text-info">
-<em>This histogram visually represents the frequency distribution of Maths scores among the students in our dataset. Each bar represents a bin of scores, and the height of the bar indicates the number of students whose scores fall within that bin.</em>
-</p>
+</p><p><em>This histogram visually represents the frequency distribution of Maths scores among the students in our dataset. Each bar represents a bin of scores, and the height of the bar indicates the number of students whose scores fall within that bin.</em></p>
+<p></p>
 <section id="ggtheme-package" class="level3">
 <h3 class="anchored" data-anchor-id="ggtheme-package"><strong>ggtheme package</strong></h3>
 <p>There is also a package called&nbsp;ggthemes&nbsp;that provides&nbsp;additional ‘ggplot2’ themes that replicate the look of plots from various sources and styles. This package extends the theming capabilities of ggplot2, allowing us to adopt the visual aesthetics of well-known publications, software, and even color palettes. Such as:</p>
@@ -564,8 +564,8 @@ In this exercise, we will move beyond basic ggplot2 usage to examine its more ad
 </div>
 <p><strong>Figure: 9</strong></p>
 <p class="text-info">
-<strong>Note:</strong> The&nbsp;<code>left</code>,&nbsp;<code>bottom</code>,&nbsp;<code>right</code>, and&nbsp;<code>top</code>&nbsp;arguments specify the relative position of the inset plot within the main plot’s coordinate system.
-</p>
+</p><p><strong>Note:</strong> The&nbsp;<code>left</code>,&nbsp;<code>bottom</code>,&nbsp;<code>right</code>, and&nbsp;<code>top</code>&nbsp;arguments specify the relative position of the inset plot within the main plot’s coordinate system.</p>
+<p></p>
 </section>
 <section id="applying-themes-to-composite-figures" class="level4">
 <h4 class="anchored" data-anchor-id="applying-themes-to-composite-figures">Applying Themes to Composite Figures</h4>
@@ -582,7 +582,7 @@ In this exercise, we will move beyond basic ggplot2 usage to examine its more ad
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Hands-on-Exercise-2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Hands-on-Exercise-2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="1440"></p>
 </figure>
 </div>
 </div>

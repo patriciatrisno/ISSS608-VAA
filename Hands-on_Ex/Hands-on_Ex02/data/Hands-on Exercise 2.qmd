@@ -4,7 +4,11 @@ subtitle: "Beyond Basic ggplot2 Fundamentals"
 author: patriciatrisno
 ---
 
-<p class="text-body-secondary">In this exercise, we will move beyond basic ggplot2 usage to examine its more advanced capabilities, focusing on techniques to create more sophisticated and informative visualizations</p>
+<p class="text-body-secondary">
+
+In this exercise, we will move beyond basic ggplot2 usage to examine its more advanced capabilities, focusing on techniques to create more sophisticated and informative visualizations
+
+</p>
 
 # Pre-Work
 
@@ -26,7 +30,11 @@ exam_data <- read_csv("~/Documents/SMU/April Term 2/Visual Analytics/patriciatri
 ```
 
 ::: {.alert .alert-dismissible .alert-success}
-<button type="button" class="btn-close" data-bs-dismiss="alert"></button> <strong>Review!</strong> From Hands-on Exercise 1, we have learned:
+<button type="button" class="btn-close" data-bs-dismiss="alert">
+
+</button>
+
+<strong>Review!</strong> From Hands-on Exercise 1, we have learned:
 
 -   How to use the \`pacman\` package (specifically the \`p_load()\` function) to efficiently check for the presence of and load essential R packages, particularly the \`tidyverse\` suite, which includes \`ggplot2\`.
 
@@ -85,7 +93,13 @@ ggplot(data=exam_data,
 
 **Figure: 1**
 
-**Insights:** <p class="text-success">*In this initial scatter plot, each data point representing a student's Maths and English scores is labeled with their unique `ID`. However, due to the relatively large number of data points concentrated in certain areas of the plot, there is significant **overlap of the labels**. This overlapping makes it difficult to clearly identify each point and read its corresponding `ID`, ultimately hindering the interpretability of the visualization. The clutter caused by the overlapping labels obscures the underlying distribution of the data.*</p>
+**Insights:**
+
+<p class="text-success">
+
+*In this initial scatter plot, each data point representing a student's Maths and English scores is labeled with their unique `ID`. However, due to the relatively large number of data points concentrated in certain areas of the plot, there is significant **overlap of the labels**. This overlapping makes it difficult to clearly identify each point and read its corresponding `ID`, ultimately hindering the interpretability of the visualization. The clutter caused by the overlapping labels obscures the underlying distribution of the data.*
+
+</p>
 
 **Improved Plot using `geom_label_repel()`**
 
@@ -115,7 +129,13 @@ ggplot(data=exam_data,
 
 **Easier Summary:** The `hjust` and `vjust` arguments in `geom_label()` offer more manual control over the initial placement of labels. In contrast, `geom_label_repel()` employs an automatic algorithm to strategically position labels, effectively preventing them from overlapping and enhancing the readability of the plot.
 
-**Insights:** <p class="text-success">*By using `geom_label_repel()`, the labels are now intelligently distributed around the data points. This significantly reduces the visual clutter and makes it much easier to associate each label (student `ID`) with its corresponding position on the scatter plot. The underlying patterns and the relationship between Maths and English scores become clearer as the labels no longer obscure the data. While some labels might be slightly further from their points with connecting lines, the overall readability and interpretability of the plot are greatly improved, especially in dense areas of data.*</p>
+**Insights:**
+
+<p class="text-success">
+
+*By using `geom_label_repel()`, the labels are now intelligently distributed around the data points. This significantly reduces the visual clutter and makes it much easier to associate each label (student `ID`) with its corresponding position on the scatter plot. The underlying patterns and the relationship between Maths and English scores become clearer as the labels no longer obscure the data. While some labels might be slightly further from their points with connecting lines, the overall readability and interpretability of the plot are greatly improved, especially in dense areas of data.*
+
+</p>
 
 # Beyond Basic ggplot2 Themes
 
@@ -147,7 +167,11 @@ ggplot(data=exam_data,
 
 The `theme_light()` applied here provides a clean and readable background with subtle grid lines, making it easier to focus on the distribution of the data.
 
-<p class="text-info">*This histogram visually represents the frequency distribution of Maths scores among the students in our dataset. Each bar represents a bin of scores, and the height of the bar indicates the number of students whose scores fall within that bin.*</p>
+<p class="text-info">
+
+*This histogram visually represents the frequency distribution of Maths scores among the students in our dataset. Each bar represents a bin of scores, and the height of the bar indicates the number of students whose scores fall within that bin.*
+
+</p>
 
 ### **ggtheme package**
 
@@ -186,7 +210,11 @@ ggplot(data=exam_data,
 ```
 
 ::: {.alert .alert-dismissible .alert-success}
-<button type="button" class="btn-close" data-bs-dismiss="alert"></button> <strong>Note</strong> Use vignette to shows practical examples of how to use these special geoms and scales to enhance our themed plots.
+<button type="button" class="btn-close" data-bs-dismiss="alert">
+
+</button>
+
+<strong>Note</strong> Use vignette to shows practical examples of how to use these special geoms and scales to enhance our themed plots.
 :::
 
 **Figure: 4**
@@ -345,7 +373,11 @@ p3 + inset_element(p2,
 
 **Figure: 9**
 
-<p class="text-info">**Note:** The `left`, `bottom`, `right`, and `top` arguments specify the relative position of the inset plot within the main plot's coordinate system.</p>
+<p class="text-info">
+
+**Note:** The `left`, `bottom`, `right`, and `top` arguments specify the relative position of the inset plot within the main plot's coordinate system.
+
+</p>
 
 #### Applying Themes to Composite Figures
 
@@ -360,6 +392,8 @@ To apply a\` ggtheme to a composite plot created with \`patchwork\`, we can sim
 ```{r}
 #| code-fold: true
 #| warning: false
+#| fig-width: 15
+#| fig-height: 7
 
 patchwork <- (p1 / p2) | p3
 patchwork & theme_economist()
