@@ -1,9 +1,18 @@
 ---
 title: "Hands-on Exercise 2"
 subtitle: "Beyond Basic ggplot2 Fundamentals"
+description: ""
 author: patriciatrisno
-date: today
-last-modified: today
+date: "April 21, 2025"
+date-modified: "last-modified"
+
+format: html
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
 ---
 
 <p class="text-body-secondary">

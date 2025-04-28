@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About Me 🎀\nI’m an Analytics student in the MITB January Intake. Maybe I don’t have as much experience as some others, but I don’t think that’s a bad thing. I see it as a chance to learn new things. It might not be easy to make the most of this chance, but I believe that staying strong and positive will help me achieve good things."
   },
   {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/data/Hands-on Exercise 1.html",
@@ -39,6 +39,27 @@
     "href": "index.html",
     "title": "ISSS608-VAA",
     "section": "",
-    "text": "Welcome to ISSS608 Visual Analytics and Applications homepage. In this website, you will find my coursework prepared for this course.\nMy goal for this course:\nAbout me:"
+    "text": "Welcome to My Visual Analytics Journey!\n\nThis page will show what I learn and practice in the ISSS608 Visual Analytics and Applications course. Here, you can see the work I do as I learn more about how to show data in interesting ways.\n\n\n\nWhat I Want to Achieve 🌟\nMy main goal for this course is to really understand how to use pictures to explain data well. I’m excited to learn how to make clear and interesting visuals that tell a story.\nFor me, getting better over time is what’s most important. I believe that if I keep trying hard, I will learn a lot and improve.\nI promise to push myself and do even better this time. I’m ready to face any challenges and learn from them."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/data/Hands-on_Exercise 2.html",
+    "href": "Hands-on_Ex/Hands-on_Ex02/data/Hands-on_Exercise 2.html",
+    "title": "Hands-on Exercise 2",
+    "section": "",
+    "text": "In this exercise, we will move beyond basic ggplot2 usage to examine its more advanced capabilities, focusing on techniques to create more sophisticated and informative visualizations"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/data/Hands-on_Exercise 2.html#beyond-single-graph",
+    "href": "Hands-on_Ex/Hands-on_Ex02/data/Hands-on_Exercise 2.html#beyond-single-graph",
+    "title": "Hands-on Exercise 2",
+    "section": "Beyond Single Graph",
+    "text": "Beyond Single Graph\nIt’s often necessary to display multiple graphs together to tell a complete visual story, allowing for comparisons, highlighting relationships, or showing different facets of the data.\nWhile, ggplot2 extensions also provide powerful functions for creating these composite figures by combining multiple individual ggplot2 plots. Here, we’ll focus on the `patchwork`package, which offers an intuitive and flexible way to arrange and combine plots.\n\nComposite Graphic - Patchwork Methods\nPreparing the Individual Plots\n\n\nCode\np1 &lt;- ggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"aquamarine2\") + \n  coord_cartesian(xlim=c(0,100)) +\n  ggtitle(\"Distribution of Maths scores\")\n\np2 &lt;- ggplot(data=exam_data, \n             aes(x = ENGLISH)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"aquamarine2\") +\n  coord_cartesian(xlim=c(0,100)) +\n  ggtitle(\"Distribution of English scores\")\n\np3 &lt;- ggplot(data=exam_data, \n             aes(x= MATHS, \n                 y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")\n\n\n\n\nCombining Plots with patchwork\nThe patchwork package provides a simple and expressive syntax for combining ggplot2 plots. Its core idea is to use arithmetic operators to arrange plots in different layouts.\nHere’s a summary of the basic syntax:\n\n+ (Plus): Places plots side-by-side in a row.\n/ (Slash): Places plots on top of each other in a column.\n| (Pipe): Combines layouts created with + and /.\n() (Parentheses): Groups sub-layouts, allowing for more complex arrangements.\n\n\nCombining Two ggplot2 Graphs\nTo arrange p1 and p2 in a single row with two columns, we can use the + operator:\n\n\nCode\np1 + p2\n\n\n\n\n\n\n\n\n\nFigure: 7\n\n\nCombining Three ggplot2 Graphs - Row and Column Layouts\nTo create a more complex layout with p1 and p2 in a column on the left and p3 on the right, we can use a combination of /and |:\n\n\nCode\n(p1 / p2) | p3\n\n\n\n\n\n\n\n\n\nFigure: 8\n\n\nCreating Figure with Insert\npatchwork also allows us to place one or more plots or graphic elements freely on top of another plot using the inset_element() function. This is useful for adding smaller, more detailed views or contextual information to a main plot.\nExample: Inserting the English score histogram (p2) into the bottom left corner of the scatter plot (p3), using inset_element():\n\n\nCode\np3 + inset_element(p2, \n                   left = 0.02, \n                   bottom = 0.7, \n                   right = 0.5, \n                   top = 1)\n\n\n\n\n\n\n\n\n\nFigure: 9\n\nNote: The left, bottom, right, and top arguments specify the relative position of the inset plot within the main plot’s coordinate system.\n\n\n\nApplying Themes to Composite Figures\nWe can apply a ggplot2 theme to an entire composite figure created with patchwork to ensure a consistent visual style across all the combined plots.\nFor example, to apply the theme_economist() from the ggthemes package to the combined plot (p1 / p2) | p3, we will use the & operator:\nOne of the powerful aspects of using `patchwork`is to combine ggplot2 plots is its seamless integration with other ggplot2 extensions, including theming packages like `ggthemes`. This allows us to apply a consistent visual style to an entire composite figure, ensuring that all the individual plots within it adhere to a unified aesthetic.\nTo apply a` ggtheme to a composite plot created with `patchwork`, we can simply use the `&` operator after constructing your combined plot layout.\n\n\nCode\npatchwork &lt;- (p1 / p2) | p3\npatchwork & theme_economist()\n\n\n\n\n\n\n\n\n\nFigure: 10\nThis will apply The Economist theme to all three plots in the composite figure, overriding their individual themes (if any) and giving the entire visualization a consistent and polished look."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex03/Hands-on_Exercise 3.html",
+    "href": "Hands-on_Ex/Hands-on_Ex03/Hands-on_Exercise 3.html",
+    "title": "Hands-on Exercise 3",
+    "section": "",
+    "text": "HO 3"
   }
 ]
