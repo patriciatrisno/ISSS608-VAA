@@ -6,7 +6,7 @@ website:
   navbar:
     background: primary
     left:
-    - text: "<img src='~/Documents/SMU/April Term 2/Visual Analytics/patriciatrisno/ISSS608-VAA/Take-home_Exercise/Take-home_Ex01/cn2.png' style='height:20px; vertical-align:middle; margin-right:6px;'> Hands-on Exercise"
+    - text: "🐻 Hands-on Exercise"
       menu:
       - text: "Hands-on Exercise 1"
         href: "Hands-on_Ex/Hands-on_Ex01/data/Hands-on Exercise 1.qmd"
@@ -18,7 +18,7 @@ website:
         href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Exercise 3B.qmd"
       - text: "Hands-on Exercise 4"
         href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Exercise 4.qmd"
-    - text: "Take-Home Exercise"
+    - text: " 🦊 Take-Home Exercise"
       menu:
       - text: "Take-Home Exercise 1"
         href: "Take-home_Exercise/Take-home_Ex01/Take-Home_Exercise01.qmd"

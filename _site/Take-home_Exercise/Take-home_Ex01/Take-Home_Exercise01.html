@@ -8,7 +8,6 @@
 
 <meta name="author" content="patriciatrisno">
 <meta name="dcterms.date" content="2025-05-02">
-<meta name="description" content="[ short describtion of the topic context ]">
 
 <title>Take-home Exercise 1 – ISSS608-VAA</title>
 <style>
@@ -126,10 +125,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-img-srcdocumentssmuapril-term-2visual-analyticspatriciatrisnoisss608-vaatake-home_exercisetake-home_ex01cn2.png-styleheight20px-vertical-alignmiddle-margin-right6px-hands-on-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text"><img src="~/Documents/SMU/April Term 2/Visual Analytics/patriciatrisno/ISSS608-VAA/Take-home_Exercise/Take-home_Ex01/cn2.png" style="height:20px; vertical-align:middle; margin-right:6px;"> Hands-on Exercise</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hands-on-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">🐻 Hands-on Exercise</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-img-srcdocumentssmuapril-term-2visual-analyticspatriciatrisnoisss608-vaatake-home_exercisetake-home_ex01cn2.png-styleheight20px-vertical-alignmiddle-margin-right6px-hands-on-exercise">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
         <li>
     <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex01/data/Hands-on Exercise 1.html">
  <span class="dropdown-text">Hands-on Exercise 1</span></a>
@@ -154,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercise" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Take-Home Exercise</span>
+ <span class="menu-text">🦊 Take-Home Exercise</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercise">    
         <li>
@@ -203,6 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#understand-the-data" id="toc-understand-the-data" class="nav-link" data-scroll-target="#understand-the-data">1.2 Understand the Data</a></li>
   <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task">1.3 Task</a></li>
   <li><a href="#working-plan-and-content-directions" id="toc-working-plan-and-content-directions" class="nav-link" data-scroll-target="#working-plan-and-content-directions">1.4 Working Plan and Content Directions</a></li>
+  <li><a href="#analysis-directions" id="toc-analysis-directions" class="nav-link" data-scroll-target="#analysis-directions">Analysis Directions:</a></li>
   </ul></li>
   <li><a href="#get-ready" id="toc-get-ready" class="nav-link" data-scroll-target="#get-ready">2 Get Ready</a></li>
   <li><a href="#data-wrangling-and-tidying" id="toc-data-wrangling-and-tidying" class="nav-link" data-scroll-target="#data-wrangling-and-tidying">3 Data Wrangling and Tidying</a></li>
@@ -220,14 +220,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Take-home Exercise 1</h1>
-<p class="subtitle lead">Beyond Basic ggplot2 Fundamentals</p>
+<p class="subtitle lead">Understanding Demographic Structures and Distribution of Singapore in 2024.</p>
 </div>
 
-<div>
-  <div class="description">
-    [ short describtion of the topic context ]
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -264,43 +259,172 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="overview">1 Overview</h2>
 <section id="background" class="level3">
 <h3 class="anchored" data-anchor-id="background">1.1 Background</h3>
-<p>————–[ describe the background context ]————–</p>
+<p>In a rapidly evolving city-state like Singapore, understanding the demographic structure and spatial distribution of the population is essential for both policy making and business decision making. Taking the role of local online media company that provide informative … to the public, we aim to present data-driven insights that help inform our readers about the shift in population trends across the island.</p>
+<p>With Singapore’s population growing older and increasing diverse [ add citation ] ,the ability to identify demographic patterns by planning area, age group, and gender can support a wide range of goals:</p>
+<ul>
+<li><p><strong>Urban Planning</strong>: Insights into population density and age structure help inform responsive and targeted planning of public services such as healthcare, education, and transportation.</p></li>
+<li><p><strong>Business and Personal Opportunities</strong>: Companies — or even individual entrepreneurs — can leverage this data to tailor their products and services based on the needs and preferences of residents in specific locations.&nbsp;</p></li>
+<li><p><strong>Public Awareness</strong>: Making demographic patterns accessible fosters greater understanding among citizens, empowering them to engage with and contribute to their local communities more meaningfully.</p></li>
+</ul>
 </section>
 <section id="understand-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="understand-the-data">1.2 Understand the Data</h3>
-<p>————–[ explain the data sources ]————–</p>
-<p>From Singapore Department of Statistics</p>
-<p>Title: <strong>Singapore Residents by Planning Area/Subzone, Single Year of Age and Sex, June 2024</strong></p>
-<p>Collected by with how many respondent</p>
-<p>————–[ what is inside the data ]————–</p>
-<p>How many rows and column variables included below :</p>
-<p>variables</p>
-<p>—– [ in table ]—–</p>
-<p>PA -Planning Area -</p>
-<p>SZ - Subzone -</p>
-<p>Age - Single Year of Age -</p>
-<p>Sex - Sex -</p>
-<p>Pop - Resident Count -</p>
-<p>Time - Time / Period -</p>
-<p>————–[ data infos ]————–</p>
+<p>The dataset is published by the&nbsp;<strong>Singapore Department of Statistics (DOS)</strong>, the official national authority responsible for collecting, compiling, analyzing, and disseminating statistics in Singapore.</p>
+<p><strong>Dataset Title:</strong><br>
+<em>Singapore Residents by Planning Area/Subzone, Single Year of Age and Sex, June 2024</em></p>
+<p>This dataset provides detailed demographic breakdowns based on&nbsp;<strong>planning area</strong>,&nbsp;<strong>subzone</strong>,&nbsp;<strong>age</strong>,&nbsp;<strong>sex</strong>, and&nbsp;<strong>resident count</strong>as of June 2024.</p>
+<section id="who-is-counted" class="level4">
+<h4 class="anchored" data-anchor-id="who-is-counted">Who is Counted?</h4>
 <ul>
-<li>For June 2024, Planning Areas refer to areas demarcated in the Urban Redevelopment Authority’s Master Plan 2019.</li>
+<li><p>The dataset includes&nbsp;<strong>Singapore residents</strong>—defined as&nbsp;<strong>citizens and permanent residents (PRs)</strong>&nbsp;who&nbsp;<em>usually live in Singapore</em>&nbsp;and have&nbsp;<em>not been away for a continuous period of 12 months or more</em>.</p></li>
+<li><p>It excludes&nbsp;<strong>non-residents</strong>, such as foreigners working, studying, or living in Singapore without permanent residency, except in some other statistics not covered in this dataset.</p></li>
 </ul>
-<p>————–[ data limitation ]————–</p>
+</section>
+<section id="data-collection-and-coverage" class="level4">
+<h4 class="anchored" data-anchor-id="data-collection-and-coverage">Data Collection and Coverage</h4>
 <ul>
-<li><p>this data exclude residents who have been away from Singapore for a continuous period of 12 months or longer as at the reference period.</p></li>
-<li><p>number had been rounded to nearest 10</p></li>
+<li><p>The&nbsp;<strong>population count</strong>&nbsp;in this dataset is based on administrative records and covers&nbsp;<strong>the full resident population</strong>.</p></li>
+<li><p>In broader census efforts, DOS samples households (e.g., around 150,000 households in the most recent census) for in-depth survey questions.</p></li>
+<li><p>The&nbsp;<strong>estimated total resident population</strong>&nbsp;of Singapore is approximately&nbsp;<strong>4 million</strong>&nbsp;as of&nbsp;<strong>June 2024</strong>&nbsp;(to be confirmed from official sources).</p></li>
 </ul>
+<p>This dataset contains <strong>60,424 rows</strong> and <strong>6 variables</strong>, providing a detailed demographic breakdown of Singapore’s resident population as of <strong>June 2024</strong>. It includes <strong>55 distinct planning areas (cities)</strong>.</p>
+</section>
+<section id="variables-included" class="level4">
+<h4 class="anchored" data-anchor-id="variables-included"><strong>Variables Included:</strong></h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 36%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th style="text-align: left;">Variable extended</th>
+<th style="text-align: right;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PA</td>
+<td style="text-align: left;">Planning Area</td>
+<td style="text-align: right;">Geographic area used for urban planning and statistical reporting.</td>
+</tr>
+<tr class="even">
+<td>SZ</td>
+<td style="text-align: left;">Subzone</td>
+<td style="text-align: right;">Smaller geographic division within a Planning Area.</td>
+</tr>
+<tr class="odd">
+<td>Age</td>
+<td style="text-align: left;">Single Year of Age</td>
+<td style="text-align: right;">Age of a resident, recorded in individual years.</td>
+</tr>
+<tr class="even">
+<td>Sex</td>
+<td style="text-align: left;">Sex</td>
+<td style="text-align: right;">Gender of a resident (e.g., male, female).</td>
+</tr>
+<tr class="odd">
+<td>Pop</td>
+<td style="text-align: left;">Resident Count</td>
+<td style="text-align: right;">Number of residents in a specific area, age group, and sex.</td>
+</tr>
+<tr class="even">
+<td>Time</td>
+<td style="text-align: left;">Time / Period</td>
+<td style="text-align: right;">Specific time point or interval to which the data refers.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="important-notes" class="level4">
+<h4 class="anchored" data-anchor-id="important-notes"><strong>Important Notes</strong></h4>
+<p>The&nbsp;<strong>Planning Areas</strong>&nbsp;used in this dataset are based on the&nbsp;<strong>Urban Redevelopment Authority’s (URA) Master Plan 2019</strong>. Although the data represents the year 2024, the spatial boundaries align with URA’s 2019 definitions. For example, areas like&nbsp;<em>Ang Mo Kio</em>&nbsp;are delineated according to this version of the planning map.</p>
+<p>Since the current analysis is limited to this specific dataset, using the 2019 planning area definitions does not present an issue.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>NOTICE !</strong></p>
+<p>If future comparisons with past years or other datasets are required, and those datasets use different planning area definitions, further alignment or reconciliation of planning boundaries must be conducted to ensure consistency in the analysis.</p>
+</div>
+</div>
+</section>
+<section id="data-limitation" class="level4">
+<h4 class="anchored" data-anchor-id="data-limitation"><strong>Data Limitation</strong></h4>
+<ul>
+<li><p>This dataset&nbsp;<strong>excludes residents</strong>&nbsp;who have been continuously overseas for&nbsp;<strong>12 months or more</strong>&nbsp;as of the reference period. Thus, it reflects the&nbsp;<strong>actively residing population</strong>, not the total number of Singapore citizens or residents.</p></li>
+<li><p>Population figures (<code>Pop</code>) have been&nbsp;<strong>rounded to the nearest 10</strong>, meaning that minor discrepancies may occur in aggregated totals. This rounding simplifies the data but reduces exact precision.<br>
+</p></li>
+</ul>
+</section>
 </section>
 <section id="task" class="level3">
 <h3 class="anchored" data-anchor-id="task">1.3 Task</h3>
-<p>purpose and method</p>
-<p>————–[ R packages used ]————–</p>
+<p>As a local online media company that publishes daily content across digital platforms, the objective is to develop a <strong>data-driven article</strong> on the <strong>demographic structure and distribution of Singapore’s population in 2024</strong>. The article aims to present key insights and patterns using clear, visual storytelling to engage a wide public audience.</p>
+<p>To achieve this, we will utilize the <strong><code>tidyverse</code></strong> family of R packages for data wrangling and transformation, and the <strong><code>ggplot2</code></strong> package (along with relevant extensions) for creating impactful and informative visualizations.</p>
 </section>
 <section id="working-plan-and-content-directions" class="level3">
 <h3 class="anchored" data-anchor-id="working-plan-and-content-directions">1.4 Working Plan and Content Directions</h3>
-<p>————–[ how each part contribute to the content creating ]————–</p>
-<p>————–[ Elaborate the directions ]————–</p>
+<p>Overall Goal: To uncover demographic trends in&nbsp;<strong>age</strong>,&nbsp;<strong>gender</strong>, and&nbsp;<strong>geographic distribution</strong>&nbsp;that are meaningful for public understanding and practical applications.</p>
+<p>Understanding the population …….. can help in various sectors decision making</p>
+<ul>
+<li><p>Understanding Service Needs</p>
+<p>For planners and policymakers, this is important. If they’re trying to figure out how many school places are needed, they want to know how many school-aged children are actually in Singapore, not those living overseas.</p></li>
+<li><p>Economic Considerations</p>
+<p>businesses might be more interested in the number of people who are currently in Singapore and likely to be consumers.</p></li>
+</ul>
+</section>
+<section id="analysis-directions" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-directions">Analysis Directions:</h3>
+<section id="understanding-population-structure" class="level4">
+<h4 class="anchored" data-anchor-id="understanding-population-structure">1.&nbsp;<strong>Understanding Population Structure</strong></h4>
+<ul>
+<li><p>Explore the age distribution by gender across Singapore.</p></li>
+<li><p>Identify population peaks (e.g., baby boomers, school-age children, aging population).</p></li>
+<li><p>Highlight gender ratios and age groups concentrated in specific planning areas.</p></li>
+</ul>
+</section>
+<section id="understanding-service-needs" class="level4">
+<h4 class="anchored" data-anchor-id="understanding-service-needs">2.&nbsp;<strong>Understanding Service Needs</strong></h4>
+<ul>
+<li><p>Insights into the number of children, working-age adults, and seniors can support decision-making for:</p>
+<ul>
+<li><p><strong>Education planning</strong>&nbsp;(e.g., school placement)</p></li>
+<li><p><strong>Healthcare services</strong>&nbsp;(e.g., clinics for elderly care)</p></li>
+<li><p><strong>Transport planning</strong>&nbsp;(e.g., routes to support population centers)</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="economic-and-business-opportunities" class="level4">
+<h4 class="anchored" data-anchor-id="economic-and-business-opportunities">3.&nbsp;<strong>Economic and Business Opportunities</strong></h4>
+<ul>
+<li><p>Businesses can leverage population data to:</p>
+<ul>
+<li><p>Identify&nbsp;<strong>high-density or youth-concentrated zones</strong>&nbsp;for targeted marketing.</p></li>
+<li><p>Plan locations for retail outlets, services, or new housing projects.</p></li>
+<li><p>Tailor products to demographic characteristics of specific areas.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="public-awareness-and-engagement" class="level4">
+<h4 class="anchored" data-anchor-id="public-awareness-and-engagement">4.&nbsp;<strong>Public Awareness and Engagement</strong></h4>
+<ul>
+<li><p>Help residents and readers:</p>
+<ul>
+<li><p>Understand&nbsp;<strong>the composition of their local communities</strong>.</p></li>
+<li><p>Appreciate how urban growth and aging trends shape daily life.</p></li>
+<li><p>Be more informed and engaged citizens.</p></li>
+</ul></li>
+</ul>
+</section>
 </section>
 </section>
 <section id="get-ready" class="level2">
@@ -341,6 +465,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>5.1 Vizualiation 1</p>
 <p>5.2 Vizualiation 2</p>
 <p>5.3 Vizualiation 3</p>
+<p>————–[ IDEAS ]————–</p>
+<ol type="1">
+<li><p><img src="images/Screenshot 2025-05-02 at 4.59.52 PM.png" class="img-fluid" width="315"></p></li>
+<li><p><img src="images/Screenshot 2025-05-02 at 5.00.14 PM.png" class="img-fluid" width="317"></p></li>
+<li><p><img src="images/Screenshot 2025-05-02 at 5.01.12 PM.png" class="img-fluid" width="321"></p></li>
+<li></li>
+</ol>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">6 Summary</h2>
