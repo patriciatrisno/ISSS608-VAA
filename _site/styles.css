@@ -1,1 +1,25 @@
 /* css styles */
+/* Navbar font */
+.navbar {
+  background-color: plum;
+  font-family: 'Gill Sans', sans-serif;
+}
+
+/* h1 font */
+h1 {
+  font-family: 'Georgia', serif;
+}
+
+/* Body font */
+body {
+  backgroun-color: lightyellow;
+  font-family: 'Times New Roman', serif;
+}
+
+.block-info {
+  background-color: #d1e7dd; /* Example: Light green background */
+  border-radius: 10px; /* Example: Round the corners by 10 pixels */
+  padding: 15px; /* Optional: Add some padding inside the block */
+  margin-bottom: 1em; /* Optional: Add some spacing below the block */
+  border: 1px solid #badbcc; /* Optional: Add a subtle border */
+}
