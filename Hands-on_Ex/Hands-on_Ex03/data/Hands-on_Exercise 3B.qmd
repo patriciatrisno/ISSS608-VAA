@@ -23,7 +23,7 @@ When telling a visually-driven data story, animated graphics tends to attract th
 
 When creating animations, the plot does not actually move. Instead, many individual plots are built and then stitched together as movie frames, just like an old-school flip book or cartoon. Each frame is a different plot when conveying motion, which is built using some relevant subset of the aggregate data. The subset drives the flow of the animation when stitched back together.
 
-![](images/image1.jpg)
+![](~/Documents/SMU/April%20Term%202/Visual%20Analytics/patriciatrisno/ISSS608-VAA/Hands-on_Ex/Hands-on_Ex03/sc1.png)
 
 ### 1.2 **Terminology**
 
