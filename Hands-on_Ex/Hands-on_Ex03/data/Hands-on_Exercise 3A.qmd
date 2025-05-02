@@ -452,7 +452,7 @@ girafe(
 
 #### **3.2.2 Styling hover effect**
 
-#### ---
+---
 
 :::: panel-tabset
 ## Interactivity {.tabset}
@@ -794,6 +794,8 @@ With using plot_ly, it allows interactive exploration of the data. By hovering 
 :::
 
 #### **4.1.1 Working with visual variable: plot_ly() method**
+
+---
 
 Additionally, we can further enhance this interactive scatter plot by adding visual cues to represent another variable in our dataset.
 
