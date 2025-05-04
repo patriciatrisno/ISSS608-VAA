@@ -128,7 +128,7 @@ ggplot(data=exam_data,
               size=0.5) +  
   geom_label_repel(aes(label = ID), 
              hjust = .5, 
-             vjust = -.5) +
+             vjust = .5) +
   coord_cartesian(xlim=c(0,100),
                   ylim=c(0,100)) +
   ggtitle("English scores versus Maths scores for Primary 3")
