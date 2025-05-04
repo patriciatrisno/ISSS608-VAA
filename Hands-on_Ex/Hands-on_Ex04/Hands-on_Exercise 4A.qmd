@@ -15,4 +15,4 @@ execute:
   code-fold: true
 ---
 
-![coming soon!](/Take-home_Exercise/Take-home_Ex01/cn1.png){alt="coming soon!" width="107"}
+![coming soon!](/Take-home_Exercise/Take-home_Ex01/cn1.png){width="107"}

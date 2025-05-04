@@ -1,0 +1,18 @@
+---
+title: "Hands-on_Exercise 4B"
+subtitle: "add subtitle"
+description: ""
+author: patriciatrisno
+date: "April 28, 2025"
+date-modified: "last-modified"
+
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+  code-fold: true
+---
+
+![coming soon!](/Take-home_Exercise/Take-home_Ex01/cn1.png){alt="coming soon!" width="107"}
