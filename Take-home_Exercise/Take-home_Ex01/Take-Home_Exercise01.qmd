@@ -408,7 +408,7 @@ Another limitation is that the population figures have been rounded to the neare
 
 Future studies could aim to incorporate more comprehensive datasets covering longer time frames, including those that account for residents who are temporarily absent. Additionally, more granular population data with less rounding could help provide a clearer picture of demographic trends.
 
-## 7 Reference
+## 8 Reference
 
 **Lumley, T. (2010).** *Complex Surveys: A Guide to Analysis Using R*. Wiley.
 
