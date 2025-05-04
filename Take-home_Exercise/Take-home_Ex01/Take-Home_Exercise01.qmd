@@ -114,7 +114,7 @@ pacman::p_load(tidyverse, patchwork, ggrepel, patchwork,
 | **`ggplot2`** | For creating advanced and customizable visualizations |
 
 |  |  |
-|----------------------------------------|--------------------------------|
+|------------------------------------|--------------------------------|
 | **`ggrepel`** | To improve the readability of plots by preventing text labels from overlapping |
 
 |  |  |
