@@ -314,75 +314,6 @@ This graph shows the population by age group in different towns, from babies (0)
 ```{r}
 #| code-fold: true
 
-exclude_areas <- c("Changi", "Downtown Core", "Museum", "Newton", "Outram",
-                   "River Valley", "Singapore River", "Southern Islands", "Tanglin", "Tengah")
-
-binrespo_filtered <- binrespo %>%
-  filter(!PA %in% exclude_areas, !is.na(age_binned), !is.na(Pop)) %>%
-  mutate(
-    age_binned_labeled = case_when(
-      age_binned == "0-5" ~ "0",
-      age_binned == "75 and Above" ~ ">75",
-      TRUE ~ as.character(age_binned)
-    ),
-    age_binned = factor(age_binned,
-                        levels = c("0-5", "6-14", "15-24", "25-34",
-                                   "35-44", "45-54", "55-64", "65-74", "75 and Above"),
-                        ordered = TRUE),
-    age_binned_labeled = factor(age_binned_labeled,
-                                levels = c("0", "6-14", "15-24", "25-34",
-                                           "35-44", "45-54", "55-64", "65-74", ">75"),
-                                ordered = TRUE)
-  )
-
-pyramid_data <- binrespo_filtered %>%
-  group_by(PA, age_binned, age_binned_labeled, Sex) %>%
-  summarise(TotalPop = sum(Pop), .groups = 'drop') %>%
-  mutate(AdjustedPop = ifelse(Sex == "Females", -TotalPop, TotalPop))
-
-ggplot(pyramid_data, aes(x = age_binned, y = AdjustedPop, fill = Sex)) +
-  geom_bar(stat = "identity", width = 0.7) +
-  coord_flip() +
-  facet_wrap(~ PA, ncol = 4) +
-  scale_y_continuous(
-    labels = abs,
-    name = "Population",
-    breaks = scales::pretty_breaks(n = 4)
-  ) +
-  scale_x_discrete(
-    name = "Age Group",
-    labels = case_when(
-      levels(pyramid_data$age_binned) %in% c("0-5", "75 and Above") ~ levels(pyramid_data$age_binned_labeled),
-      TRUE ~ ""
-    )
-  ) +
-  scale_fill_manual(values = c("Females" = "pink", "Males" = "lightblue")) +
-  labs(
-    title = "Population Pyramid of Singapore Residents by Planning Area (2024)",
-    subtitle = "Visualized by Age Group and Sex",
-    caption = "Source: Department of Statistics Singapore"
-  ) +
-  theme_minimal() +
-  theme(
-    axis.text.y = element_text(size = 8),
-    axis.ticks.y = element_line(),
-    axis.title.y = element_text(margin = margin(r = 10)),
-    axis.title.x = element_text(margin = margin(t = 10)),
-    axis.text.x = element_blank(),
-    axis.ticks.x = element_blank(),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    strip.text = element_text(size = 8, face = "bold"),
-    plot.title = element_text(hjust = 0.5, face = "bold", margin = margin(b = 15)),
-    legend.position = "none",
-    plot.margin = margin(20, 20, 20, 20)
-  )
-
-```
-
-```{r}
-#| code-fold: true
-
 
 include_areas <- c("Bedok", "Marine Parade", "Punggol", "Toa Payoh")
 
@@ -463,11 +394,11 @@ ggplot(pyramid_data, aes(x = age_binned, y = AdjustedPop, fill = Sex)) +
     Across all areas, the number of males and females is quite balanced. However, there are more older women, especially in Marine Parade and Bedok.
 :::
 
-## 6 Summary
+## 5 Summary
 
 The population distribution across various towns in Singapore highlights the noticeable trend of an aging society. In many areas, the number of elderly individuals outweighs that of children, reflecting the broader demographic shift. Bedok is particularly notable for its large elderly population, which stands out in comparison to other regions. While worth noting that some towns have relatively small populations, others exhibit a more balanced distribution, with an almost equal number of children and older adults. This pattern undersline the varying demographic profiles across different parts of the country.
 
-## 7 Limitation and Future Study
+## 6 Limitation and Future Study
 
 The analysis is based solely on data from 2024, with the dataset covering information only up until September 24, 2024. As a result, this dataset does not fully represent the broader trends or fluctuations that may have occurred beyond this period.
 
@@ -477,8 +408,10 @@ Another limitation is that the population figures have been rounded to the neare
 
 Future studies could aim to incorporate more comprehensive datasets covering longer time frames, including those that account for residents who are temporarily absent. Additionally, more granular population data with less rounding could help provide a clearer picture of demographic trends.
 
-## 8 Reference
+## 7 Reference
 
 **Lumley, T. (2010).** *Complex Surveys: A Guide to Analysis Using R*. Wiley.
 
 **Rowland, D. T. (2003)**. *Demographic methods and concepts*. Oxford University Press.
+
+**Singapore Department of Statistics (DOS).** (2024, June). *Singapore Residents by Planning Area/Subzone, Single Year of Age and Sex*.
