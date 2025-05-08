@@ -7,7 +7,7 @@ Getting Started
 
 # Install and launching R packages
 
-The code chunk below uses p_load() of pacman package to check if tidyverse packages have been in the computer. If they are, then they will be launced into R
+\^\*The code chunk below uses p_load() of pacman package to check if tidyverse packages have been in the computer. If they are, then they will be launced into R
 
 ```{r}
 pacman::p_load(tidyverse)
