@@ -402,7 +402,6 @@ fp_ggplotly <- ggplotly(p,
   tooltip = c("label", 
               "x", 
               "y"))
-fp_ggplotly
 ```
 :::
 
