@@ -14,7 +14,7 @@ execute:
   freeze: true
 ---
 
-## 1 Overview
+## 1 Overview5
 
 ### 1.1 Background
 
@@ -39,7 +39,7 @@ This dataset contains **60,424 rows** and **6 variables**, providing a detailed 
 #### **Variables Included:**
 
 | Variable | Variable extended | Description | Data Type |
-|------------------|:-----------------|------------------:|-----------------:|
+|------------------|:-----------------|-----------------:|-----------------:|
 | PA | Planning Area | Geographic area used for urban planning and statistical reporting. | Char |
 | SZ | Subzone | Smaller geographic division within a Planning Area. | Char |
 | Age | Single Year of Age | Age of a resident, recorded in individual years. | Char (will be converted to integer) |
@@ -114,7 +114,7 @@ pacman::p_load(tidyverse, patchwork, ggrepel, patchwork,
 | **`ggplot2`** | For creating advanced and customizable visualizations |
 
 |  |  |
-|------------------------------------|--------------------------------|
+|------------------------------------|------------------------------------|
 | **`ggrepel`** | To improve the readability of plots by preventing text labels from overlapping |
 
 |  |  |

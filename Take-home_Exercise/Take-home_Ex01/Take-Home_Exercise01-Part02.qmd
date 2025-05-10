@@ -1,5 +1,17 @@
 ---
 title: "Take-Home_Exercise 1 (Part 2)"
+subtitle: "Understanding Demographic Structures and Distribution of Singapore in 2024."
+description: "Peer Review"
+author: patriciatrisno
+date: "May 10, 2025"
+date-modified: "last-modified"
+format: html
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
 ---
 
 In this peer review, I will be analyzing [*Teo Wee Siang Roy's*](https://iss608-first-session.netlify.app/take-home_ex/take-home_ex01/take-home_ex01) visualization of the Singapore (2024) population pyramid.
@@ -10,11 +22,11 @@ Effective data visualization plays a crucial role in conveying complex demograph
 
 First of all, let’s take a look at this plot that we will be reviewing.
 
-![](Take-home_Exercise/Take-home_Ex01/images/Review%20Graph.png){width="615"}
+![](images/Review Graph.png){width="770"}
 
 We will also recreate a similar plot based on the idea and code provided by the student. However, since the cleaned dataset used in the original work is not available, we will instead work with a pre-cleaned version of the data.
 
-#### Package Installation and 
+#### Package Installation and
 
 ```{r}
 #| code-fold: true
@@ -33,13 +45,17 @@ gganimate, gifski, gapminder)
 pop_data <- read_csv("~/Documents/SMU/April Term 2/Visual Analytics/patriciatrisno/ISSS608-VAA/Take-home_Exercise/Take-home_Ex01/data/respopagesex2024/respopagesex2024.csv")
 ```
 
-Note: We are using pre-cleaned data based on the description shared by the student. Please note that some specific cleaning steps—such as the removal of rows with zero population—may not be interpreted in exactly the same way.
+::: callout-note
+### Note:
+
+We are using pre-cleaned data based on the description shared by the student. Please note that some specific cleaning steps—such as the removal of rows with zero population—may not be interpreted in exactly the same way.
 
 In our version, we interpret areas with constant zero or near-zero population as likely being non-residential zones. These could include industrial areas, commercial districts, nature reserves, or national parks. Therefore, we have removed subzones that show consistently zero or almost entirely zero population counts.
 
 However, subzones with very low but non-zero populations (approximately 0–40 residents) are kept in the dataset. We believe these areas may still offer valuable insights due to their potentially unique characteristics.
+:::
 
-While subzones like *Dunearn*, *Moulmein*, *Kent Ridge*, *Pasir Panjang 1 & 2*, *Institution Hill*, *Robertson Quay*, *Sentosa*, *Tyresall*, and *Springleaf* may represent pockets of unique demographics within Singapore, making them important to retain for further analysis.
+While subzones like [**Dunearn**,**Moulmein**,**Kent Ridge**,**Pasir Panjang 1 & 2**,**Institution Hill**,**Robertson Quay**,**Sentosa**,**Tyresall**, and **Springleaf**]{style="color:#8a2be2; font-weight:bold"} may represent pockets of unique demographics within Singapore, making them important to retain for further analysis.
 
 ```{r}
 #| code-fold: true
@@ -99,42 +115,45 @@ ggplot(pyramid_data, aes(x = Age, y = Population, fill = Sex)) +
   ) 
 ```
 
-**Note:**\
+::: callout-note
+### Note:
+
 The plot generated here may not look exactly the same as the original—especially in terms of population distribution. This difference is likely due to the different rules we used for eliminating certain subzones or cities during data cleaning.
 
 However, our main focus is not on matching the exact numbers or areas used, but rather on understanding how to use a population pyramid plot to effectively communicate insights about population structure. The goal is to show how visual design can help present demographic patterns clearly and meaningfully.
+:::
 
 ## **2 Good Design Principles**
 
 ### 1.1 Clear and Visually Appealing Use of Font
 
-![](Take-home_Exercise/Take-home_Ex01/images/title.png){width="300" height="68"}
+![](images/title.png){width="498"}
 
-The choice of font for the title and descriptions is both clean and easy to read. Using bold for the title helps grab attention and gives readers a quick idea of what the plot is about. This is important for guiding the audience right from the start.
+The choice of **font for the title and descriptions** is both **clean and easy to read**. Using bold for the title helps grab attention and gives readers a quick idea of what the plot is about. This is important for guiding the audience right from the start.
 
-The subtitle is styled with a smaller font size and a lighter color, which clearly signals that it provides additional context. This visual hierarchy makes it easier to process the information at a glance.
+The subtitle is styled with a smaller font size and a lighter color, which clearly signals that it provides additional context. This visual hierarchy makes it **easier to process the information at a glance**.
 
-> **Design principles highlighted:** Transparency, fast communication of key insights.
+> **Design principles highlighted:** [**Transparency, fast communication of key insights.**]{style="color:#8a2be2; font-weight:bold"}
 
 ### 1.2 Effective Use of Color to Represent Gender
 
-![](Take-home_Exercise/Take-home_Ex01/images/color.png)
+![](images/color.png)
 
-The use of different colors—teal for males and salmon pink for females—clearly separates the two groups. This color distinction, supported by a clear legend at the top, helps viewers easily understand the data.
+**The use of different colors**—teal for males and salmon pink for females—**clearly separates the two groups**. This color distinction, supported by a clear legend at the top, helps viewers easily understand the data.
 
 The colors are also aesthetically pleasing and not overwhelming. They’re appropriate for representing gender categories, with salmon often used for females and teal for males.
 
-> **Design principles highlighted:** Clarity, accuracy, and effective communication.
+> **Design principles highlighted:** [**Clarity, accuracy, and effective communication.**]{style="color:#8a2be2; font-weight:bold"}
 
 ### 1.3 Logical Structure and Symmetrical Layout
 
-![](Take-home_Exercise/Take-home_Ex01/images/axis range.png)
+![](images/axis range.png)
 
-The vertical axis shows age groups in ascending order, starting from age 0 at the bottom to 100 at the top. This logical ordering aligns with how we typically interpret age data, making the plot intuitive to read.
+The vertical axis shows **age groups in ascending order,** starting from age 0 at the bottom to 100 at the top. This **logical ordering** aligns with how we typically interpret age data, making the plot **intuitive to read**.
 
-The population bars are arranged symmetrically around a central axis, which allows for easy comparison between male and female population sizes within each age group. This mirrored layout is not only visually balanced but also enhances the plot’s accuracy and readability.
+The population bars are **arranged symmetrically around a central axis**, which allows for easy comparison between male and female population sizes within each age group. This mirrored layout is not only visually balanced but also **enhances the plot’s accuracy and readability**.
 
-> **Design principles highlighted:** Accuracy, visual balance, and meaningful comparison.
+> **Design principles highlighted:** [**Accuracy, visual balance, and meaningful comparison.**]{style="color:#8a2be2; font-weight:bold"}
 
 ## **3 Three Areas for Further Improvement**
 
@@ -142,29 +161,37 @@ In this part we will briefly take a look, on three parts that can be improved.
 
 ### 3.1 Title and Legend / Main Description
 
-![](Take-home_Exercise/Take-home_Ex01/images/fix title.png)
+![](images/fix title.png)
 
--   The title "Population Pyramid of Singapore (2024)" can be more specific.
+-   The **title** "Population Pyramid of Singapore (2024)" **can be more specific.**
 
--   The subtitle "Male population is shown on the left, female on the right" is helpful, but since the colors already show gender differences clearly, the legend might not be needed. Also, the plot doesn’t make full use of the empty space to explain or give more useful information.
+-   The subtitle "Male population is shown on the left, female on the right" is helpful, but since the colors already show gender differences clearly, the **legend might not be needed**. Also, the plot doesn’t make full use of the empty space to explain or give more useful information.
 
 ### 3.2 Axis Scaling and Information
 
-![](Take-home_Exercise/Take-home_Ex01/images/age range fix.png)
+![](images/age range fix.png)
 
--   The vertical axis shows every single age from 0 to 100, which makes it crowded. It's hard to read the exact population for each age because the bars are very narrow and close together.
+-   making the **chart visually crowded** (narrow and densely packed bars) and **difficult to** interpret or to **grasp meaningful differences in population across ages at a glance**.
 
--   Additionally, in the original data, the age values are only listed as **“90 and above”** for older groups. This makes it hard to know the exact distribution of people above 90 years old. We can’t tell whether most of them are 91 or much older, which limits the usefulness of the data when studying aging populations.
+::: callout-note
+### Note:
 
--   Also, the horizontal axis shows large numbers like 50,000 or 100,000 without explanation, which might be confusing for some viewers.
+Both approaches—displaying the full age distribution and grouping ages into bins—serve different analytical purposes.
+
+Showing each individual age can be helpful when precise, granular insights are needed, such as identifying specific age spikes or anomalies.
+
+On the other hand, grouping ages into broader intervals helps simplify the data, making it easier to observe general demographic patterns and trends across age ranges. This binning approach enhances readability and supports more effective comparisons between larger population segments.
+:::
+
+-   The original chart **displays age values up to 100**, which does not align with the source data that categorizes all individuals aged 90 and above into a single group. This can **lead to misinterpretation.**
+
+-   Also, the **horizontal axis** shows l**arge numbers like 50,000** or 100,000 **without explanation**, which might be **confusing** for some audiences. While the chart gives a lot of information, it’s not easy to quickly understand the exact number of people in each group. Without clear numbers or percentages, it’s hard for viewers to get a good sense of how many people are in each age or gender category.
 
 ### 3.3 Content, Text, and Visual Layout
 
-![](Take-home_Exercise/Take-home_Ex01/images/axes fix.png)
+![](images/axes fix.png)
 
--   The axis labels are placed very close to the plot, which makes the chart feel a bit crowded and harder to read.
-
--   Also, while the chart gives a lot of information, it’s not easy to quickly understand the exact number of people in each group. Without clear numbers or percentages, it’s hard for viewers to get a good sense of how many people are in each age or gender category.
+-   The **axis labels are placed very close to the plot**, which makes the chart feel a bit crowded and **harder to read**.
 
 ## 4 **Makeover and Details (with reference to the comment)**
 
@@ -174,12 +201,8 @@ In this section We will begin by outlining several ways to improve the visualiza
 
 ### 3.1 Title and Legend / Main Description
 
--   Use a more detailed title like **"Age and Gender Distribution of Singapore's Population (2024)"**.
-
-<!-- -->
-
--   Remove the legend and directly label **"Male"** and **"Female"** in the white space above each side of the pyramid.
-
+-   Use a more detailed title like **"Age and Gender Distribution of Singapore's Population (2024)"**.
+-   Remove the legend and directly label **"Male"** and **"Female"** in the white space above each side of the pyramid.
 -   Use the subtitle or description area to mention the **total population size** or include **data source information**, which adds context and makes the chart more informative.
 
 ```{r}
@@ -325,14 +348,14 @@ ggplot(pyramid_data_grouped, aes(x = AgeGroup, y = Population_neg, fill = Sex)) 
 
 -   Create more **space between the axis labels and the bars**, so everything looks cleaner and easier to read.
 
--   Adjust the font size of 'Female' and 'Male' annotation. Adjust the figure size to better fit the page. Bold the axis title for greater emphasis to the labels.
+-   **Adjust the font size** of 'Female' and 'Male' annotation. **Adjust the figure size** to better fit the page. Bold the axis title for greater emphasis to the labels.
 
--   Remove extra space after 90.
+-   **Remove extra space after 90.**
 
 ```{r}
 #| code-fold: true
 #| fig-width: 10
-#| fig-height: 9
+#| fig-height: 12
 
 # Calculate the total pop
 total_pop <- pop_data %>%
@@ -394,10 +417,10 @@ ggplot(pyramid_data_grouped, aes(x = AgeGroup, y = Population_neg, fill = Sex)) 
   ) +
   theme_minimal(base_family = "Helvetica") +
   theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(size = 12, hjust = 0.5,color = "grey40"),
-    axis.text.y = element_text(size = 8,  margin = margin(r = 10, l = 0)), # Add right margin
-    axis.text.x = element_text(size = 10,  margin = margin(t = 5, b = 0)), # Add top margin
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, vjust=3),
+    plot.subtitle = element_text(size = 12, hjust = 0.5,vjust=3,color = "grey40"),
+    axis.text.y = element_text(size = 12,  margin = margin(r = 10, l = 0)), # Add right margin
+    axis.text.x = element_text(size = 12,  margin = margin(t = 5, b = 0)), # Add top margin
     axis.title.x = element_text(margin = margin(t = 10, b = 0), face = "bold"), # Add top margin to x-axis title
     axis.title.y = element_text(margin = margin(r = 10, l = 0), face = "bold"), # Add right margin to y-axis title
     legend.position = "top",
@@ -408,6 +431,5 @@ ggplot(pyramid_data_grouped, aes(x = AgeGroup, y = Population_neg, fill = Sex)) 
 ```
 
 ::: callout-note
-**Through each part, we can see how this plot is improved.**
+**Through each part, now we can see how this plot is improved.**
 :::
-
