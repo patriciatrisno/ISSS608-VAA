@@ -1,0 +1,52 @@
+/* css styles */
+/* ===== Core Variables ===== */
+:root {
+  --plum-primary: #dda0dd;        /* Your plum */
+  --plum-dark: #6a1b9a;           /* Data-to-Viz header */
+  --bg-light: #fffaf0;            /* Light yellow (adjusted for contrast) */
+  --text-dark: #495057;           /* Data-to-Viz text */
+  --accent-purple: #9c27b0;       /* Data-to-Viz accent */
+}
+
+/* ===== Body & Typography ===== */
+body {
+  /*background-color: var(--bg-light);*/
+  font-family: 'Times New Roman', serif; /* Keep your classic font */
+  color: var(--text-dark);               /* Modern gray text */
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Georgia', serif;   /* Keep your serif */
+  color: var(--plum-dark);         /* Deep purple headers */
+  border-bottom: 1px solid rgba(221, 160, 221, 0.3); /* Plum underline */
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background-color: var(--plum-primary);
+  font-family: 'Gill Sans', sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Add subtle shadow */
+}
+
+/* ===== Blocks ===== */
+.block-info {
+  background-color: #f0f7f4;             /* Lighter green */
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 1em;
+  border: 1px solid #d1e7dd;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Data-to-Viz subtle shadow */
+}
+
+
+/* ===== Links & Interactive ===== */
+a {
+  color: var(--accent-purple);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--plum-dark);
+  text-decoration: underline;
+}
