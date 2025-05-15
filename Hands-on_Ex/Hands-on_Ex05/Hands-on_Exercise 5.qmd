@@ -657,6 +657,6 @@ visNetwork(GAStech_nodes,
   visLayout(randomSeed = 123)
 ```
 
-Visit [Option](http://datastorm-open.github.io/visNetwork/options.html) to find out more about visOption's argument.
+Visit [Option](http://datastorm-open.github.io/visNetwork/options.html) to find out more about vis Option's argument.
 
 ## 9 Reference
