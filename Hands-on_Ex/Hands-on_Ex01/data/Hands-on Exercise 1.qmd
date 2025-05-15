@@ -1,0 +1,162 @@
+---
+title: "Hands-on Exercise 1"
+author: "patriciatrisno"
+---
+
+Getting Started
+
+# Install and launching R packages
+
+\^\*The code chunk below uses p_load() of pacman package to check if tidyverse packages have been in the computer. If they are, then they will be launced into R
+
+```{r}
+pacman::p_load(tidyverse)
+```
+
+## Importing the data
+
+```{r}
+
+exam_data <- read_csv("~/Documents/SMU/April Term 2/Visual Analytics/patriciatrisno/ISSS608-VAA/Hands-on_Ex/Hands-on_Ex01/data/Exam_data.csv")
+```
+
+# Plotting a simple bar chart
+
+```{r}
+#| echo: false
+
+ggplot(exam_data, aes(x = MATHS)) + 
+  geom_bar()
+
+ggplot(exam_data, aes(x = MATHS)) + 
+  geom_dotplot(binwidth = 2.5, dotsize = 0.6) +
+  scale_y_continuous(NULL, breaks = NULL)
+
+ggplot(exam_data, aes(x = MATHS)) + 
+  geom_histogram(bins = 20, color = "black", fill = "pink")
+
+ggplot(exam_data, aes(x = MATHS, fill = GENDER)) + 
+  geom_histogram(bins = 20, color = "grey30")
+
+ggplot(exam_data, aes(x = GENDER, y = MATHS, fill = GENDER)) +
+  geom_boxplot()
+
+
+```
+
+### **Geometric Objects**
+
+```{r}
+#| echo: false
+ggplot(data=exam_data,
+       aes(x = MATHS,
+           colour = GENDER)) + 
+  geom_density()
+
+ggplot(data=exam_data,
+       aes(y = MATHS,
+           x = GENDER)) + 
+  geom_boxplot(notch=TRUE)
+```
+
+```{r}
+ggplot(data=exam_data, 
+       aes(y = MATHS, 
+           x= GENDER)) +
+  geom_violin()
+
+ggplot(data=exam_data, 
+       aes(y = MATHS, 
+           x= GENDER)) +
+  geom_point()
+
+ggplot(data=exam_data, 
+       aes(y = MATHS, 
+           x= GENDER)) +
+  geom_boxplot() +                    
+  geom_point(position="jitter", 
+             size = 0.5)        
+```
+
+#### Working with ggplot2 elements - stat
+
+```{r}
+ggplot(data=exam_data, 
+       aes(y = MATHS, 
+           x= GENDER)) +
+  geom_boxplot() +                    
+  stat_summary(geom = "point",
+               fun = "mean",
+               colour = "red",
+               size=4) 
+
+ggplot(data=exam_data, 
+       aes(x= MATHS, y=ENGLISH)) +
+  geom_point() +
+  geom_smooth(size=0.2)
+
+ggplot(data=exam_data, 
+       aes(x= MATHS, 
+           y=ENGLISH)) +
+  geom_point() +
+  geom_smooth(method=lm, 
+              linewidth=0.5)
+```
+
+#### Working with ggplot2 elements - facet
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x= MATHS)) +
+  geom_histogram(bins=20) +
+    facet_wrap(~ CLASS)
+
+ggplot(data=exam_data, 
+       aes(x= MATHS)) +
+  geom_histogram(bins=20) +
+    facet_grid(~ CLASS)
+```
+
+#### Working with ggplot2 elements - coordinates
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip()
+
+ggplot(data=exam_data, 
+       aes(x= MATHS, y=ENGLISH)) +
+  geom_point() +
+  geom_smooth(method=lm, size=0.5)
+
+ggplot(data=exam_data, 
+       aes(x= MATHS, y=ENGLISH)) +
+  geom_point() +
+  geom_smooth(method=lm, 
+              size=0.5) +  
+  coord_cartesian(xlim=c(0,100),
+                  ylim=c(0,100))
+```
+
+#### Working with ggplot2 elements - themes
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip() +
+  theme_gray()
+
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip() +
+  theme_classic()
+
+ggplot(data=exam_data, 
+       aes(x=RACE)) +
+  geom_bar() +
+  coord_flip() +
+  theme_minimal()
+```

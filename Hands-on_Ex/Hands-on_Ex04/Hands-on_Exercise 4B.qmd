@@ -1,0 +1,503 @@
+---
+title: "Hands-on_Exercise 4B"
+subtitle: "Visual Statistical Analysis"
+description: ""
+author: patriciatrisno
+date: "May 8, 2025"
+date-modified: "last-modified"
+
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+  code-fold: true
+---
+
+## 1 Learning Outcome
+
+In this hands-on exercise, you will gain hands-on experience on using:
+
+-   ggstatsplot package to create visual graphics with rich statistical information,
+
+-   performance package to visualise model diagnostics, and
+
+-   parameters package to visualise model parameters
+
+## 2 Visual Statistical Analysis with **ggstatsplot**
+
+[**ggstatsplot**](https://indrajeetpatil.github.io/ggstatsplot/index.html) ![](images/img1.png){width="31" height="35"} is an extension of [**ggplot2**](https://ggplot2.tidyverse.org/) package for creating graphics with details from statistical tests included in the information-rich plots themselves.
+
+-   To provide alternative statistical inference methods by default.
+
+-   To follow best practices for statistical reporting. For all statistical tests reported in the plots, the default template abides by the [APA](https://my.ilstu.edu/~jhkahn/apastats.html) gold standard for statistical reporting.
+
+    For example, here are results from a robust t-test:
+
+![](images/img2.jpg)
+
+## 3 Getting Started
+
+### 3.1 Installing and launching R packages
+
+::: panel-tabset
+### R packages {.tabset}
+
+In this exercise, **ggstatsplot** and **tidyverse** will be used.
+
+-   **ggstatsplot:** An R package for making statistical plots easily, similar to `ggplot2`.
+
+-   **tidyverse:** A collection of helpful R packages for data handling and plotting (including `ggplot2`).
+
+### The Code {.tabset}
+
+```{r}
+pacman::p_load(ggstatsplot, tidyverse)
+```
+:::
+
+### 2.2 Data import
+
+In this exercise we will use *Exam_data.csv*
+
+```{r}
+#| code-fold: true
+
+exam <- read_csv("~/Documents/SMU/April Term 2/Visual Analytics/patriciatrisno/ISSS608-VAA/Hands-on_Ex/Hands-on_Ex04/data/Exam_data.csv")
+exam
+```
+
+## 3 One-sample test: *gghistostats()* method
+
+In the code chunk below, [*gghistostats()*](https://indrajeetpatil.github.io/ggstatsplot/reference/gghistostats.html) is used to to build an visual of one-sample test on English scores.
+
+::: panel-tabset
+### The Plot {.tabset}
+
+```{r}
+#| echo: false
+
+set.seed(1234)
+
+gghistostats(
+  data = exam,
+  x = ENGLISH,
+  type = "bayes",
+  test.value = 60,
+  xlab = "English Scores",
+  ylab = "Count",
+  title = "Bayesian Analysis of English Scores"
+) +
+  scale_y_continuous(
+    name = "Count",
+    sec.axis = sec_axis(~ ., name = "Proportion")
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 5, size = 16), 
+    axis.title.x = element_text(margin = margin(t = 15)),
+    axis.title.y.left = element_text(margin = margin(r = 15)),
+    axis.title.y.right = element_text(margin = margin(l = 15)),
+    plot.subtitle = element_text(vjust = 5),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")
+  ) +
+  scale_x_continuous(breaks = seq(20, 100, by = 10))
+
+```
+
+### The Code {.tabset}
+
+```{r}
+#| eval: false
+
+set.seed(1234)
+
+gghistostats(
+  data = exam,
+  x = ENGLISH,
+  type = "bayes",
+  test.value = 60,
+  xlab = "English Scores",
+  ylab = "Count",
+  title = "Bayesian Analysis of English Scores"
+) +
+  scale_y_continuous(
+    name = "Count",
+    sec.axis = sec_axis(~ ., name = "Proportion")
+  ) +
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 5, size = 16), 
+    axis.title.x = element_text(margin = margin(t = 15)),
+    axis.title.y.left = element_text(margin = margin(r = 15)),
+    axis.title.y.right = element_text(margin = margin(l = 15)),
+    plot.subtitle = element_text(vjust = 5),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm") 
+  ) +
+  scale_x_continuous(breaks = seq(20, 100, by = 10))
+```
+
+### Detailed Explanation {.tabset}
+
+-   $\log_e(\text{BF}_{01}) = -31.45$: This indicates very strong evidence against the alternative hypothesis (that the mean English score is different from the $\text{test.value}$ of 60).
+
+-   $\hat{\delta}_{\text{difference}} = 7.16$: This is the estimated difference between the posterior mean and the $\text{test.value}$.
+
+-   $CI_{95\%}^{\text{ETI}} [5.54, 8.75]$: This is the 95% Equal-Tailed Interval for the difference, suggesting that the true difference likely lies within this range.
+
+-   $r_{\text{Cauchy}}^{\text{JZS}} = 0.71$: This is an estimate of the effect size.
+
+-   $\hat{\mu}_{\text{MAP}} = 74.74$. It would be helpful to explicitly state that this is the Maximum A Posteriori estimate of the mean English score under your Bayesian model.
+:::
+
+::: note-block
+In this plot, we are using histogram overlaid with statistical summaries. The histogram shows the distribution of scores, with " Count" on the left y-axis and "Proportion" on the right.
+
+**Using the default of the gghistostats() :**
+
+-   Bayes Factor (BF): Indicates the strength of evidence comparing the observed data against a null value (test value = 60).
+
+-   Distribution summary: Key descriptors such as mean, standard deviation, and confidence intervals are displayed.
+
+-   Sample size (n): The number of observations used in the analysis is reported.
+
+-   A Bayesian decision interpretation based on the Bayes Factor (e.g., "moderate evidence for the alternative hypothesis").
+:::
+
+## 4 Unpacking the Bayes Factor
+
+-   A Bayes factor is the ratio of the likelihood of one particular hypothesis to the likelihood of another. It can be interpreted as a measure of the strength of evidence in favor of one theory among two competing theories.
+
+-   That's because the Bayes factor gives us a way to evaluate the data in favor of a null hypothesis, and to use external information to do so. It tells us what the weight of the evidence is in favor of a given hypothesis.
+
+-   When we are comparing two hypotheses, H1 (the alternate hypothesis) and H0 (the null hypothesis), the Bayes Factor is often written as B10. It can be defined mathematically as
+
+    ![](images/img3.jpg){width="529"}
+
+-   The [**Schwarz criterion**](https://www.statisticshowto.com/bayesian-information-criterion/) is one of the easiest ways to calculate rough approximation of the Bayes Factor.
+
+### 4.1 How to interpret Bayes Factor
+
+A **Bayes Factor** can be any positive number. One of the most common interpretations is this one---first proposed by Harold Jeffereys (1961) and slightly modified by [Lee and Wagenmakers](https://www-tandfonline-com.libproxy.smu.edu.sg/doi/pdf/10.1080/00031305.1999.10474443?needAccess=true) in 2013:
+
+![](images/img5.jpg){width="532"}
+
+## 5 Two-sample mean test: *ggbetweenstats()*
+
+In the code chunk below, [*ggbetweenstats()*](https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html) is used to build a visual for two-sample mean test of Maths scores by gender.
+
+::: panel-tabset
+### The Plot {.tabset}
+
+```{r}
+#| echo: false
+
+ggbetweenstats(
+  data = exam,
+  x = GENDER, 
+  y = MATHS,
+  type = "np",
+  messages = FALSE,
+  xlab = "Gender",
+  ylab = "Math Scores",
+  title = "Math Scores by Gender"
+  
+) +
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 5, size = 16), 
+    axis.title.x = element_text(margin = margin(t = 15)),
+    axis.title.y = element_text(margin = margin(r = 15)),
+    plot.subtitle = element_text(vjust = 5),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm") 
+  )
+```
+
+### The Code {.tabset}
+
+```{r}
+#| eval: false
+
+ggbetweenstats(
+  data = exam,
+  x = GENDER, 
+  y = MATHS,
+  type = "np",
+  messages = FALSE,
+  xlab = "Gender",
+  ylab = "Math Scores",
+  title = "Math Scores by Gender"
+  
+) +
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 5, size = 13), 
+    axis.title.x = element_text(margin = margin(t = 15)),
+    axis.title.y = element_text(margin = margin(r = 15)),
+    plot.subtitle = element_text(vjust = 5),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")
+  )
+
+
+```
+
+### Code Explanation {.tabset}
+
+In the `gghistostats()` plot, Bayesian analysis is used to compare data (English scores) to a reference value (e.g 60). Instead of using traditional p-values, Bayesian methods give a **Bayes Factor (BF)** — which tells you **how strong the evidence is** for the **alternative hypothesis** (e.g., "scores are different from 60") compared to the **null hypothesis** ("scores are equal to 60").
+
+-   **BF \> 1** → supports the alternative.
+
+-   **BF \< 1** → supports the null.
+
+-   The higher or lower the BF, the stronger the evidence.
+
+By setting `type = "np"` (non-parametric), you're telling it to **not assume a normal distribution**, which is safer when the data isn’t perfectly normal.
+
+-   **Since p=0.91** (much greater than 0.05) indicates **no statistically significant difference**in math scores between females and males.
+
+-   **Rank biserial correlation = 0.007** → effect size is **extremely small** (nearly zero).
+
+-   **95% CI \[-0.12, 0.13\]** → the true difference in ranks is likely small or none.
+:::
+
+## 6 Oneway ANOVA Test: *ggbetweenstats()* method
+
+In the code chunk below, [*ggbetweenstats()*](https://indrajeetpatil.github.io/ggstatsplot/reference/ggbetweenstats.html) is used to build a visual for One-way ANOVA test on English score by race.
+
+::: panel-tabset
+### The Plot {.tabset}
+
+```{r}
+#| echo: false
+
+ggbetweenstats(
+  data = exam,
+  x = RACE, 
+  y = ENGLISH,
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE,
+  xlab = "Race",
+  ylab = "English Score",
+  title = "English Scores by Race",
+)+
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 5, size = 13), 
+    axis.title.x = element_text(margin = margin(t = 15)),
+    axis.title.y = element_text(margin = margin(r = 15)),
+    plot.subtitle = element_text(vjust = 5),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")
+  )
+
+```
+
+### The Code
+
+```{r}
+#| eval: false
+
+ggbetweenstats(
+  data = exam,
+  x = RACE, 
+  y = ENGLISH,
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE,
+  xlab = "Race",
+  ylab = "English Score",
+  title = "English Scores by Race",
+)+
+  theme(
+    plot.title = element_text(hjust = 0.5, vjust = 3, size = 13), 
+    axis.title.x = element_text(margin = margin(t = 15)
+    axis.title.y = element_text(margin = margin(r = 15)),
+    plot.subtitle = element_text( vjust = 5),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")
+  )
+```
+:::
+
+```         
+```
+
+-   "ns" → only non-significant
+-   "s" → only significant
+-   "all" → everything
+
+#### ggbetweenstats - Summary of tests
+
+![](images/img7.jpg)
+
+![](images/img8.jpg)
+
+![](images/img9.jpg)
+
+## 7 Significant Test of Correlation: *ggscatterstats()*
+
+::: panel-tabset
+### The Plot {.tabset}
+
+```{r}
+#| echo: false
+
+ggscatterstats(
+  data = exam,
+  x = MATHS,
+  y = ENGLISH,
+  marginal = FALSE,
+  title = "Relationship Between Math and English Scores", 
+  xlab = "Math Scores",                                 
+  ylab = "English Scores",                              
+  messages = FALSE                                       
+) +
+  theme(
+    plot.title = element_text(
+      hjust = 0.5,       
+      size = 14,            
+      face = "bold",        
+      margin = margin(b = 15)  
+    ),
+    axis.title.x = element_text(
+      margin = margin(t = 10),  
+      size = 12               
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 10),  
+      size = 12               
+    ),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")  
+  )
+```
+
+### The Code
+
+In the code chunk below, [*ggscatterstats()*](https://indrajeetpatil.github.io/ggstatsplot/reference/ggscatterstats.html) is used to build a visual for Significant Test of Correlation between Maths scores and English scores.In the code chunk below, [*ggscatterstats()*](https://indrajeetpatil.github.io/ggstatsplot/reference/ggscatterstats.html) is used to build a visual for Significant Test of Correlation between Maths scores and English scores.
+
+```{r}
+#| eval: false
+
+ggscatterstats(
+  data = exam,
+  x = MATHS,
+  y = ENGLISH,
+  marginal = FALSE,
+  title = "Relationship Between Math and English Scores", 
+  xlab = "Math Scores",                                 
+  ylab = "English Scores",                              
+  messages = FALSE                                       
+) +
+  theme(
+    plot.title = element_text(
+      hjust = 0.5,       
+      size = 14,            
+      face = "bold",        
+      margin = margin(b = 15)  
+    ),
+    axis.title.x = element_text(
+      margin = margin(t = 10),  
+      size = 12               
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 10),  
+      size = 12               
+    ),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")  
+  )
+```
+:::
+
+## 8 Significant Test of Association (Depedence) : *ggbarstats()* methods
+
+::: panel-tabset
+### The Plot {.tabset}
+
+```{r}
+#| echo: false
+
+
+exam1 <- exam %>% 
+  mutate(
+    MATHS_bins = cut(
+      MATHS,
+      breaks = c(0, 60, 75, 85, 100),
+    ))
+  
+
+ggbarstats(
+  data = exam1,
+  x = MATHS_bins,
+  y = GENDER,
+  title = "Distribution of Math Score Bins by Gender", 
+  xlab = "Math Score Bins",                          
+  ylab = "Proportion (%)",                             
+  messages = FALSE                                     
+) +
+  theme(
+    plot.title = element_text(
+      hjust = 0.5,             
+      size = 12,              
+      face = "bold",           
+      margin = margin(b = 15)   
+    ),
+    axis.title.x = element_text(
+      margin = margin(t = 10),  
+      size = 10               
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 10),
+      size = 10               
+    ),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")  
+  )
+```
+
+### The Code
+
+In the code chunk below, the Maths scores is binned into a 4-class variable by using [*cut()*](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/cut).
+
+```{r}
+#| eval: false
+
+exam1 <- exam %>% 
+  mutate(MATHS_bins = 
+           cut(MATHS, 
+               breaks = c(0,60,75,85,100))
+)
+```
+
+In this code chunk below [*ggbarstats()*](https://indrajeetpatil.github.io/ggstatsplot/reference/ggbarstats.html) is used to build a visual for Significant Test of Association
+
+```{r}
+#| eval: false
+
+ggbarstats(
+  data = exam1,
+  x = MATHS_bins,
+  y = GENDER,
+  title = "Distribution of Math Score Bins by Gender", 
+  xlab = "Math Score Bins",                          
+  ylab = "Proportion (%)",                             
+  messages = FALSE                                     
+) +
+  theme(
+    plot.title = element_text(
+      hjust = 0.5,             
+      size = 12,              
+      face = "bold",           
+      margin = margin(b = 15)   
+    ),
+    axis.title.x = element_text(
+      margin = margin(t = 10),  
+      size = 10               
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 10),
+      size = 10               
+    ),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")  
+  )
+```
+:::
