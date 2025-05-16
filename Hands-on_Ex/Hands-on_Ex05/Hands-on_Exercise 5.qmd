@@ -382,6 +382,10 @@ g + facet_edges(~Weekday)
 The code chunk below uses *theme()* to change the position of the legend.
 
 ```{r}
+#| code-fold: true
+#| fig-width: 9
+#| fig-height: 6
+
 set_graph_style()
 
 g <- ggraph(GAStech_graph, 
@@ -403,6 +407,10 @@ g + facet_edges(~Weekday) +
 The code chunk below adds frame to each graph.
 
 ```{r}
+#| code-fold: true
+#| fig-width: 9
+#| fig-height: 6
+
 set_graph_style() 
 
 g <- ggraph(GAStech_graph, 
@@ -424,6 +432,11 @@ g + facet_edges(~Weekday) +
 In the code chunkc below, [*facet_nodes()*](https://ggraph.data-imaginist.com/reference/facet_nodes.html) is used. Before getting started, it is advisable for you to read it's reference guide at least once.
 
 ```{r}
+#| code-fold: true
+#| fig-width: 9
+#| fig-height: 6
+
+
 set_graph_style()
 
 g <- ggraph(GAStech_graph, 
@@ -451,6 +464,10 @@ It is beyond the scope of this hands-on exercise to cover the principles and mat
 :::
 
 ```{r}
+#| code-fold: true
+#| fig-width: 9
+#| fig-height: 7
+
 g <- GAStech_graph %>%
   mutate(betweenness_centrality = centrality_betweenness()) %>%
   ggraph(layout = "fr") + 
@@ -459,7 +476,7 @@ g <- GAStech_graph %>%
   scale_edge_width(range = c(0.1, 5)) +
   geom_node_point(aes(colour = Department,
             size=betweenness_centrality))
-g + theme_graph()
+g + theme_graph() 
 ```
 
 ::: callout-tip
@@ -475,6 +492,10 @@ g + theme_graph()
 It is important to note that from **ggraph v2.0** onward tidygraph algorithms such as centrality measures can be accessed directly in ggraph calls. This means that it is no longer necessary to precompute and store derived node and edge centrality measures on the graph in order to use them in a plot.
 
 ```{r}
+#| code-fold: true
+#| fig-width: 9
+#| fig-height: 7
+
 g <- GAStech_graph %>%
   ggraph(layout = "fr") + 
   geom_edge_link(aes(width=Weight), 
@@ -519,6 +540,8 @@ Please be reminded that you must to install and include [**ggforce**](https://gg
 ```{r}
 #| fig-width: 10
 #| fig-height: 10
+
+
 g <- GAStech_graph %>%
   activate(nodes) %>%
   mutate(community = as.factor(
