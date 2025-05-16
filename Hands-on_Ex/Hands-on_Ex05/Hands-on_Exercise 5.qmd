@@ -150,7 +150,9 @@ Before getting started, you are advised to read these two articles:
 -   [Introducing tidygraph](https://www.data-imaginist.com/2017/introducing-tidygraph/)
 -   [tidygraph 1.1 - A tidy hope](https://www.data-imaginist.com/2018/tidygraph-1-1-a-tidy-hope/)
 
------- \[ Add my sum here\] —————
+::: callout-note
+From these 2 articles, you can get to understand more about the tidyverse principles to network data in R, including how to manipulate graph data (nodes and edges) cleanly and consistently. While tidy hope can further make performance faster with new graph algorithms and better integration. 
+:::
 
 ### 4.1 The **tbl_graph** object
 
@@ -183,8 +185,6 @@ In this section, you will use `tbl_graph()` of **tinygraph** package to build an
 
 ::: callout-note
 Recommended to review to reference guide of [`tbl_graph()`](https://tidygraph.data-imaginist.com/reference/tbl_graph.html)
-
---------- \[ADD sum here\] ———–
 :::
 
 ```{r}
@@ -576,8 +576,6 @@ GAStech_edges_aggregated <- GAStech_edges %>%
   ungroup()
 ```
 
------- \[ CONTINUE FROM HERE \] ———
-
 ### 8.2 Plotting the first interactive network graph
 
 The code chunk below will be used to plot an interactive network graph by using the data prepared.
@@ -660,3 +658,5 @@ visNetwork(GAStech_nodes,
 Visit [Option](http://datastorm-open.github.io/visNetwork/options.html) to find out more about vis Option's argument.
 
 ## 9 Reference
+
+Pedersen, T. L. (2020). *tidygraph: A Tidy API for Graph Manipulation*. R package version 1.2.0.
