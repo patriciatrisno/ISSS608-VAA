@@ -1,5 +1,16 @@
 ---
 title: "VAST Challenge 2025"
+description: ""
+author: patriciatrisno
+date: "May 13, 2025"
+date-modified: "last-modified"
+format: html
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
 ---
 
 ## 1 Install Package
