@@ -127,7 +127,7 @@ plot the line first, before nodes. if alpha = 1 (there won't we transparency)
 ```{r}
 graph_memberof <- graph %>%
   activate(edges) %>%
-  filter(`Edge Type` == "Memberof")
+  filter(`Edge Type` == "MemberOf")
 ```
 
 #### Step 2: Extract only connected nodes (i.e., used in these edges)

@@ -242,6 +242,13 @@
     "href": "VAST Challenge 2025/MC1/VAST Challenge 2025.html#section-2",
     "title": "VAST Challenge 2025",
     "section": "",
-    "text": "Step 1: Filter edges to only “Memberof”\n\ngraph_memberof &lt;- graph %&gt;%\n  activate(edges) %&gt;%\n  filter(`Edge Type` == \"Memberof\")\n\n\n\nStep 2: Extract only connected nodes (i.e., used in these edges)\n\nused_node_indices &lt;- graph_memberof %&gt;%\n  activate(edges) %&gt;%\n  as_tibble() %&gt;% \n  select(from, to) %&gt;%\n  unlist() %&gt;%\n  unique\n\n\n\nStep 3: Keep only those nodes\n\ngraph_memberof &lt;- graph_memberof %&gt;% \n  activate(nodes) %&gt;%\n  mutate(row_id = row_number()) %&gt;%\n  filter(row_id %in% used_node_indices) %&gt;%\n  select(-row_id) #optional cleanup\n\n\n\nPlot the sub-graph\n\nggraph(graph_memberof,\n       layout = \"fr\") +\n  geom_edge_link(alpha = 0.5,\n                 color =\"grey\") +\n  geom_node_point(aes(color = `Node Type`),\n                  size = 1) +\n  geom_node_text(aes(label = name),\n                repel = TRUE,\n                size = 2.5) +\n  theme_void()"
+    "text": "Step 1: Filter edges to only “Memberof”\n\ngraph_memberof &lt;- graph %&gt;%\n  activate(edges) %&gt;%\n  filter(`Edge Type` == \"MemberOf\")\n\n\n\nStep 2: Extract only connected nodes (i.e., used in these edges)\n\nused_node_indices &lt;- graph_memberof %&gt;%\n  activate(edges) %&gt;%\n  as_tibble() %&gt;% \n  select(from, to) %&gt;%\n  unlist() %&gt;%\n  unique\n\n\n\nStep 3: Keep only those nodes\n\ngraph_memberof &lt;- graph_memberof %&gt;% \n  activate(nodes) %&gt;%\n  mutate(row_id = row_number()) %&gt;%\n  filter(row_id %in% used_node_indices) %&gt;%\n  select(-row_id) #optional cleanup\n\n\n\nPlot the sub-graph\n\nggraph(graph_memberof,\n       layout = \"fr\") +\n  geom_edge_link(alpha = 0.5,\n                 color =\"grey\") +\n  geom_node_point(aes(color = `Node Type`),\n                  size = 1) +\n  geom_node_text(aes(label = name),\n                repel = TRUE,\n                size = 2.5) +\n  theme_void()\n\nWarning: ggrepel: 788 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ISSS608-VAA",
+    "section": "",
+    "text": "Welcome to My Visual Analytics Journey!\n\nThis page will show what I learn and practice in the ISSS608 Visual Analytics and Applications course. Here, you can see the work I do as I learn more about how to show data in interesting ways.\n\n\n\nWhat I Want to Achieve 🌟\nMy main goal for this course is to really understand how to use pictures to explain data well. I’m excited to learn how to make clear and interesting visuals that tell a story.\nFor me, getting better over time is what’s most important. I believe that if I keep trying hard, I will learn a lot and improve.\nI will push myself and do even better this time. ✨🍀"
   }
 ]
