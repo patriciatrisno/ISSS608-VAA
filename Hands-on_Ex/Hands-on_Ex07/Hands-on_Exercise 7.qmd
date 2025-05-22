@@ -1,0 +1,5 @@
+---
+title: "Hands-on_Exercise 6"
+---
+
+![coming soon!](/Take-home_Exercise/Take-home_Ex01/cn1.png){alt="coming soon!" width="107"}
