@@ -353,7 +353,7 @@ We extract only the **relevant nodes and edges** for visualization, focusing o
 
 ```{r}
 #| code-fold: true
-#| eval: false
+
 
 # Set target: Sailor Shift, get the id
 sailor_id <- nodes_tbl %>%
@@ -454,7 +454,7 @@ Since Sailor is also a member of Ivy Echos—a group that played a key role alon
 
 ```{r}
 #| code-fold: true
-#| eval: false
+
 
 # Set target: Ivy Echos, get the id
 ivy_id <- nodes_tbl %>%
@@ -589,6 +589,8 @@ In this part we will incorporate ggplot2 to better show the trends in
 ### 6.1 Visualizing Trend of Oceanus Folk by their Number of Release Overtime
 
 ```{r}
+#| echo: false
+#| results: hide
 #| fig-show: hide
 #| code-fold: true
 
@@ -638,8 +640,11 @@ Overall, the trend after 2023 appears to be higher than before 2023, though the 
 To understand it's popularity we can also take a look at number of artist or musical group that adopt Oceanus Folk song. Here we consider artist that perform, compose and covering the song with Oceanus Folk genre
 
 ```{r}
+#| echo: false
+#| results: hide
 #| fig-show: hide
 #| code-fold: true
+
 
 # get the id of song and album with oceanus folk genre
 oceanus_musics_ids <- oceanus_musics$id
@@ -702,7 +707,7 @@ This network visualization aims to explore how Oceanus Folk has influenced other
 ```{r}
 #| fig-show: hide
 #| code-fold: true
-#| eval: false
+
 
 #  Filter: Influence Edges Only
 influence_types <- c("InStyleOf", "InterpolatesFrom", "CoverOf", "LyricalReferenceTo", "DirectlySamples")
@@ -782,6 +787,9 @@ Each node represents a song or album, while edges show the type of influence—s
 #### 7.1.2 Visualizing amount of genre (song) influenced by Oceanus folk
 
 ```{r}
+#| echo: false
+#| results: hide
+#| fig-show: hide
 #| code-fold: true
 
 influence_types <- c("InStyleOf", "InterpolatesFrom", "CoverOf", "LyricalReferenceTo", "DirectlySamples")
@@ -858,6 +866,9 @@ ggraph(graph_bipartite, layout = "bipartite") +
 The graph reveals that a few genres—such as Dessert Rock, Emo/Pop Punk, Indie Folk, Space Rock, and Americana—stand out as the primary recipients of Oceanus Folk’s influence. In contrast, most other genres exhibit relatively consistent and lower levels of influence.
 
 ```{r}
+#| echo: false
+#| results: hide
+#| fig-show: hide
 #| code-fold: true
 
 influenced_info <- edges_to_oceanus %>%
@@ -942,6 +953,8 @@ ggraph(layout_custom) +
 
 ```
 
+![](images/img 4.png)
+
 **Insights:**
 
 Both graphs convey similar insights; however, when examining the types of musical works, it becomes evident that **songs are influenced more frequently than albums**, as reflected in their higher counts.
@@ -950,7 +963,7 @@ Both graphs convey similar insights; however, when examining the types of musica
 
 ```{r}
 #| code-fold: true
-#| eval: false
+
 
 oceanus_songs <- nodes_tbl %>%
   filter(`Node Type` == "Song", genre == "Oceanus Folk") %>%
@@ -1084,9 +1097,7 @@ This section focuses on **how the *style, themes, and network* of Oceanus Fol
 In this first section, we explore the genres that have influenced **Oceanus Folk** from 2023 (year of the rise of Ivy Echos)
 
 ```{r}
-
 #| code-fold: true
-
 
 # Filter for Oceanus Folk songs/albums created in the last 2 years
 recent_oceanus <- nodes_tbl %>%
@@ -1121,7 +1132,6 @@ While Oceanus Folk continues to influence itself through internal evolution, sev
 To better understand how **recent Oceanus Folk works (2023 onward)** have been influenced by other genres, this visualization provides a **clear, centralized network** showing the volume of genre-level influence. Rather than just listing genre counts, this format makes it easier to **see which genres have the strongest connections** to Oceanus Folk and how influence spreads visually. The node size gives immediate feedback on which genres had the most impact.
 
 ```{r}
-
 #| code-fold: true
 
 #  Get recent Oceanus Folk works (2023+)
@@ -1189,7 +1199,7 @@ ggraph(graph, layout = 'fr') +
 
 ```
 
-Insights:
+**Insights:**
 
 It is immediately apparent that **Indie Folk** is the most prominent genre influencing Oceanus Folk in the recent period, followed by **Dream Pop**, **Doom Metal**, **Synthwave**, and **Desert Rock**. These genres collectively reflect a mix of atmospheric, experimental, and emotionally expressive styles, suggesting that **contemporary Oceanus Folk is evolving by absorbing textures from ambient, rock-adjacent, and niche subcultures**.
 
@@ -1198,7 +1208,6 @@ While Oceanus Folk also draws from itself (self-reinforcing evolution), the dive
 ### 8.2 Oceanus Folk Influencing Types following the rise of Sailor shift
 
 ```{r}
-
 #| code-fold: true
 
 
@@ -1241,6 +1250,8 @@ ggplot(genre_edge_summary, aes(x = genre, y = influence_count, fill = `Edge Type
 ```
 
 ```{r}
+#| code-fold: true
+
 genre_edge_summary <- influenced_with_genre %>%
   count(genre, `Edge Type`, name = "influence_count") %>%
   arrange(desc(influence_count))
