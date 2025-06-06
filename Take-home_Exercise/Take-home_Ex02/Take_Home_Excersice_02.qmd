@@ -3,7 +3,7 @@ title: "Take_Home_2 - Mini case 1"
 author: patriciatrisno
 date: "May 31 2025"
 date-modified: "last-modified"
-format: docx
+format: html
 editor: visual
 execute: 
   eval: true
@@ -1307,10 +1307,6 @@ While Oceanus Folk also draws from itself (self-reinforcing evolution), the dive
 
 #| code-fold: true
 
-
-library(dplyr)
-library(tidyr)
-library(ggplot2)
 
 #  Filter Oceanus Folk works from 2023 onward
 oceanus_recent <- nodes_tbl %>%
