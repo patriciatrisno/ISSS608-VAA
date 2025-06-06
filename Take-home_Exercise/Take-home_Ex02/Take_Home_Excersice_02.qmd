@@ -3,7 +3,7 @@ title: "Take_Home_2 - Mini case 1"
 author: patriciatrisno
 date: "May 31 2025"
 date-modified: "last-modified"
-format: html
+format: docx
 editor: visual
 execute: 
   eval: true
