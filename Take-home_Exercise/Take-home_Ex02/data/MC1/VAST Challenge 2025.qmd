@@ -1,0 +1,178 @@
+---
+title: "VAST Challenge 2025"
+description: ""
+author: patriciatrisno
+date: "May 13, 2025"
+date-modified: "last-modified"
+format: html
+editor: visual
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+## 1 Install Package
+
+We would need to install jsonlite in order to access our data which is in json format.
+
+```{r}
+pacman::p_load(tidyverse, jsonlite, SmartEDA, tidygraph, ggraph)
+```
+
+## 2 Import Knowledge Graph Data
+
+```{r}
+kg <- fromJSON("~/Documents/SMU/April Term 2/Visual Analytics/patriciatrisno/ISSS608-VAA/VAST Challenge 2025/MC1/MC1_graph.json")
+```
+
+### Inspect structure
+
+```{r}
+str(kg, max.level = 1)
+```
+
+```{r}
+view(kg[["nodes"]])
+kg[["links"]]
+```
+
+can explore the variables and node types, links
+
+### Extract and Inspect
+
+```{r}
+nodes_tb1 <- as_tibble(kg$nodes)
+edges_tb1 <- as_tibble(kg$links)
+```
+
+### Initial EDA
+
+```{r}
+ggplot(data = edges_tb1,
+       aes(y = `Edge Type`)) +
+    geom_bar()
+```
+
+```{r}
+ggplot(data = nodes_tb1,
+       aes(y = `Node Type`)) +
+    geom_bar()
+```
+
+### 
+
+## Creating Knowledge Graph
+
+This is
+
+### Step 1: mapping from node id to row index
+
+```{r}
+id_map <- tibble(id = nodes_tb1$id,
+                 index = seq_len(
+                   nrow(nodes_tb1)))
+```
+
+This is ensures each id from your node list is mapped tot he correct row number
+
+### Step 2: Map sources and target IDs to row indices
+
+```{r}
+edges_tb1 <- edges_tb1 %>% 
+  left_join(id_map, by = c("source" = "id")) %>%
+  rename(from = index) %>%
+  left_join(id_map, by = c("target" = "id")) %>%
+  rename(to = index)
+```
+
+### Step 3: Filter out any unmatched
+
+```{r}
+edges_tb1 <- edges_tb1 %>%
+  filter(!is.na(from), !is.na(to))
+```
+
+### Step 4: Creating the Graph
+
+Lastly, `tbl_graph()` is used to create tidgraph's graph ibject by sing the code below
+
+```{r}
+graph <- tbl_graph(nodes = nodes_tb1,
+                   edges = edges_tb1,
+                   directed = kg$directed) #can also do directed = TRUE
+```
+
+## 
+
+## Visualizing the knowledge Graph
+
+```{r}
+set.seed(1234)
+```
+
+## Visualizing the whole graph
+
+```{r}
+#| eval: false
+ggraph(graph, layout = "fr") +
+  geom_edge_link(alpha = 0.3,
+                 colour = "gray")+
+  geom_node_point(aes(colour = `Node Type`),
+                  size = 4) +
+  geom_node_text(aes(label = name),
+                repel = TRUE,
+                size = 2.5) +
+  theme_void()
+```
+
+::: callout-note
+plot the line first, before nodes. if alpha = 1 (there won't we transparency)
+:::
+
+## 
+
+#### Step 1: Filter edges to only "Memberof"
+
+```{r}
+graph_memberof <- graph %>%
+  activate(edges) %>%
+  filter(`Edge Type` == "MemberOf")
+```
+
+#### Step 2: Extract only connected nodes (i.e., used in these edges)
+
+```{r}
+used_node_indices <- graph_memberof %>%
+  activate(edges) %>%
+  as_tibble() %>% 
+  select(from, to) %>%
+  unlist() %>%
+  unique
+```
+
+#### Step 3: Keep only those nodes
+
+```{r}
+graph_memberof <- graph_memberof %>% 
+  activate(nodes) %>%
+  mutate(row_id = row_number()) %>%
+  filter(row_id %in% used_node_indices) %>%
+  select(-row_id) #optional cleanup
+```
+
+#### Plot the sub-graph
+
+```{r}
+ggraph(graph_memberof,
+       layout = "fr") +
+  geom_edge_link(alpha = 0.5,
+                 color ="grey") +
+  geom_node_point(aes(color = `Node Type`),
+                  size = 1) +
+  geom_node_text(aes(label = name),
+                repel = TRUE,
+                size = 2.5) +
+  theme_void()
+```

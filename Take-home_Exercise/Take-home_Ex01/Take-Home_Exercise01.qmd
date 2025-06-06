@@ -39,7 +39,7 @@ This dataset contains **60,424 rows** and **6 variables**, providing a detailed 
 #### **Variables Included:**
 
 | Variable | Variable extended | Description | Data Type |
-|----|:---|---:|---:|
+|------------------|:-----------------|-----------------:|-----------------:|
 | PA | Planning Area | Geographic area used for urban planning and statistical reporting. | Char |
 | SZ | Subzone | Smaller geographic division within a Planning Area. | Char |
 | Age | Single Year of Age | Age of a resident, recorded in individual years. | Char (will be converted to integer) |
@@ -106,7 +106,7 @@ pacman::p_load(tidyverse, patchwork, ggrepel, patchwork,
 |---------|---------|
 
 |  |  |
-|----|----|
+|------------------------------------|------------------------------------|
 | **`tidyverse`** | A collection of packages for data manipulation, wrangling, and visualization (includes `ggplot2`, `dplyr`, `tidyr`, `readr`, etc.) |
 
 |               |                                                       |
@@ -114,15 +114,15 @@ pacman::p_load(tidyverse, patchwork, ggrepel, patchwork,
 | **`ggplot2`** | For creating advanced and customizable visualizations |
 
 |  |  |
-|----|----|
+|------------------------------------|------------------------------------|
 | **`ggrepel`** | To improve the readability of plots by preventing text labels from overlapping |
 
 |  |  |
-|----|----|
+|------------------------------------|------------------------------------|
 | **`ggthemes`** | Provides a collection of ready-to-use themes for `ggplot2` to enhance plot aesthetics |
 
 |  |  |
-|----|----|
+|------------------------------------|------------------------------------|
 | **`hrbrthemes`** | Provides a set of clean and consistent `ggplot2` themes often inspired by typography |
 
 |                 |                                                   |

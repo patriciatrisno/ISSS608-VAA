@@ -53,7 +53,7 @@ attacks <- read_csv("data/eventlog.csv")
 
 In this section, we will learn how to plot a calender heatmap programmatically by using ggplot2 package.
 
-![](images/HO6 img1.png)
+![](images/HO6%20img1.png)
 
 ::: callout-note
 **Our goals for this chapter:**
@@ -190,7 +190,7 @@ Then we can simply group the count by hour and wkday and plot it, since we know 
 
 **Challenge:** Building multiple heatmaps for the top four countries with the highest number of attacks.
 
-![](images/HO6 img2.png)
+![](images/HO6%20img2.png)
 
 ::: callout-note
 Pay attention that this the x label of the 2 graph KR and NL is not properly present. This will require further arrangement for visual representation.
@@ -260,7 +260,7 @@ ggplot(top4_attacks,
 
 In this section, you will learn how to plot a cycle plot showing the time-series patterns and trend of visitor arrivals from Vietnam programmatically by using ggplot2 functions.
 
-![](images/HO6 img3.png)
+![](images/HO6%20img3.png)
 
 ### 9.1 Step 1: Data Import
 

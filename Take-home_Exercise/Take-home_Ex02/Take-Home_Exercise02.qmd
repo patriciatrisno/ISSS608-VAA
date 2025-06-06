@@ -1,7 +1,0 @@
----
-title: "Take-Home_Exercise 2"
----
-
-![](/Take-home_Exercise/Take-home_Ex01/cn1.png){fig-align="left" width="107"}
-
-Coming Soon!
