@@ -1,0 +1,96 @@
+---
+title: "Data Preparation"
+---
+
+1.  Name with multiple ids
+
+```{r}
+pacman::p_load(tidyverse, jsonlite,
+               tidygraph, ggraph, igraph, plotly, visNetwork,ggtext, ggiraph,patchwork, kableExtra, showtext)
+```
+
+```{r}
+
+data <- fromJSON("~/Documents/SMU/April Term 2/Visual Analytics/patriciatrisno/ISSS608-VAA/VAST Challenge 2025/MC1/MC1_graph.json")
+
+edges <- as_tibble(data$links)
+edge
+
+nodes <- as_tibble(data$nodes)
+nodes
+```
+
+**Colors**
+
+```{r}
+
+# Define Color Mappings
+node_colors <- c(
+  "Person" = "deepskyblue",
+  "MusicalGroup" = "purple",
+  "RecordLabel" = "lightpink",
+  "Song" = "darkred",
+  "Album" = "lightblue",
+  "Other Genre" = "gray",
+  "Oceanus Folk" = "gold"
+)
+
+edge_colors <- c(
+  "Influenced By" = "#FF5733", 
+  "Creator Of" = "#8A2BE2",
+  `NA` = "transparent"
+  
+)
+```
+
+**Check for missing values**
+
+```{r}
+
+colSums(is.na(edges))
+colSums(is.na(nodes))
+```
+
+```{r}
+
+edges[duplicated(edges),]
+```
+
+**Mapping from node id to row index**
+
+```{r}
+id_map <- tibble(id = nodes$id,
+                 index = seq_len(
+                   nrow(nodes)))
+```
+
+**Map source and target IDs to row indices**
+
+```{r}
+edges <- edges %>%
+  left_join(id_map, by = c("source" = "id")) %>%
+  rename(from = index) %>%
+  left_join(id_map, by = c("target" = "id")) %>%
+  rename(to = index)
+```
+
+**Filtering out unmatched edges**
+
+```{r}
+edges <- edges %>%
+  filter(!is.na(from), !is.na(to))
+```
+
+**Plotting the Whole Graph**
+
+```{r}
+graph <- tbl_graph(nodes = nodes, edges = edges, directed = data$directed)
+
+graph <- graph %>%
+  activate(nodes) %>%
+  mutate(`Node Type` = factor(`Node Type`, levels = names(node_colors)))
+```
+
+```{r}
+
+```

@@ -1,0 +1,16 @@
+Version: 1.0
+ProjectId: 66631cac-d5b6-4db6-bff4-bbbe294facba
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+ProjectName: ISSS608-VAA

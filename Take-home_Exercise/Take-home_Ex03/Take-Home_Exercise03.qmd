@@ -1,0 +1,129 @@
+---
+title: "Take Home Exercise"
+---
+
+## Part 1 - Understand Sailor's Profile
+
+### 1. Who has she been most influenced by over time?
+
+goal: understand her style roots and originality
+
+1.  **who shaped her music identity**
+
+    -   source: song / album
+
+    -   target: sailor's song / album
+
+    -   edge: `InStyleOf`, `InterpolatesFrom`, `CoverOf`, `LyricalReferenceTo`, `DirectlySamples`
+
+    -   further: find the artist who create the song
+
+2.  **behind-the-scenes influencers of her lyrics/melodies**
+
+    -   source: person
+
+    -   target: sailor's song / album
+
+    -   edge: `ComposerOf`, `LyricistOf`
+
+    -   note: this might also relate to who she collaborate.
+
+    -   other interpretation: who compose her song, and how many this person has help Sailor? and any other artist / sosng this person compose for?
+
+3.  **understand how her inspirations evolved, especially before vs. after 2015 or during Oceanus Folk’s rise**
+
+    -   source: song / album
+
+    -   target: Sailor's Song / album
+
+    -   edge: `InStyleOf`, `InterpolatesFrom`, `CoverOf`, `LyricalReferenceTo`, `DirectlySamples`
+
+    -   goal: temporal mapping of influence trends
+
+4.  **Reveals what genres she pulls inspiration from (e.g., Oceanus Folk, Jazz, etc.)**
+
+    -   source: song / album (with genre)
+
+    -   target: sailor's song / album
+
+    -   edge: `InStyleOf`, `InterpolatesFrom`, `CoverOf`, `LyricalReferenceTo`, `DirectlySamples`
+
+5.  **Recurring external collaborators shaping her musical production (Production Influence)**
+
+    -   source: Person / label
+
+    -   target: Sailor or her works
+
+    -   edge: ProducerOf
+
+### 2. Who has she collaborated with and directly or indirectly influenced?
+
+[**COLLABORATE**]{.underline}
+
+1.  **Reveals her artistic network and immediate creative circle**
+    -   source: person that is not sailor
+
+    -   target: shared song / album with sailor
+
+    -   edge: PerformerOf
+2.  **Shows more intimate and long-term collaborations within music collectives**
+    -   source: person
+
+    -   target: Musical Group
+
+    -   edge: MemberOf
+3.  Reveals collaborators across broader creative roles (not just performers)
+    -   source: person
+
+    -   target: Shared song / album
+
+    -   `ComposerOf`, `LyricistOf`, `ProducerOf`
+
+[**DIRECTLY INFLUENCED**]{.underline}
+
+1.  **Converts influence from work-level to person-level for deeper insight into mentorship or creative ripple effect**
+    -   source: person
+
+    -   target: Songs influenced by sailor
+
+    -   edge: Performerof, composerOf
+
+    -   goal: to know the people behind those works
+
+[**INDIRECTLY INFLUENCED**]{.underline}
+
+\| \# \| Interpretation \| Edge Type(s) \| 2-hop traversal of same edges \| Sailor’s Work → Intermediary Work → Final Work \| Shows her indirect contribution to the creative ecosystem \|
+
+### 3. How has she influenced collaborators of the broader Oceanus Folk community?
+
+1.  Connects her collaborations to the expansion of the genre
+
+    -   source:
+
+    -   target:
+
+2.  Measures the strength of her impact within the genre via collaborators
+
+    -   source
+
+3.  Quantifies her influence on the Oceanus Folk genre directly
+
+## Part 2
+
+1.  Design and develop visualizations and visual analytic tools that will allow Silas to explore and understand the profile of Sailor Shift’s career
+
+<!-- -->
+
+1.  Develop visualizations that illustrate how the influence of Oceanus Folk has spread through the musical world.
+
+    1.  Was this influence intermittent or did it have a gradual rise?
+
+    2.  What genres and top artists have been most influenced by Oceanus Folk?
+
+    3.  On the converse, how has Oceanus Folk changed with the rise of Sailor Shift? From which genres does it draw most of its contemporary inspiration?
+
+2.  Use your visualizations to develop a profile of what it means to be a rising star in the music industry.
+
+    1.  Visualize the careers of three artists. Compare and contrast their rise in popularity and influence.
+
+    2.  Using this characterization, give three predictions of who the next Oceanus Folk stars with be over the next five years.
