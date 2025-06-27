@@ -7,6 +7,7 @@ date-modified: "last-modified"
 format:
   html:
     toc: true
+    self-contained: true
 execute: 
   echo: true
   eval: true
@@ -315,7 +316,6 @@ In this section, you will learn how to create interactive information dashboard 
 In order to build an interactive sparklines, we need to install dataui R package by using the code chunk below.
 
 ```{r}
-#| eval: false
 remotes::install_github("timelyportfolio/dataui")
 ```
 
@@ -324,7 +324,6 @@ remotes::install_github("timelyportfolio/dataui")
 Similar to gtExtras, to plot an interactive sparklines by using reactablefmtr package we need to prepare the list field by using the code chunk below.
 
 ```{r}
-#| code-fold: true
 report <- report %>%
   arrange(Product, Month) %>%
   group_by(Product) %>%
@@ -334,7 +333,6 @@ report <- report %>%
 Next, [react_sparkline](https://kcuilla.github.io/reactablefmtr/reference/react_sparkline.html) will be to plot the sparklines as shown below.
 
 ```{r}
-#| code-fold: true
 reactable(
   report,
   columns = list(
@@ -353,7 +351,6 @@ reactable(
 By default the pagesize is 10. In the code chunk below, arguments defaultPageSize is used to change the default setting.
 
 ```{r}
-#| code-fold: true
 reactable(
   report,
   defaultPageSize = 13,
@@ -371,7 +368,6 @@ reactable(
 In the code chunk below `highlight_points` argument is used to show the minimum and maximum values points and `label` argument is used to label first and last values.
 
 ```{r}
-#| code-fold: true
 reactable(
   report,
   defaultPageSize = 13,
@@ -394,7 +390,6 @@ reactable(
 In the code chunk below `statline` argument is used to show the mean line.
 
 ```{r}
-#| code-fold: true
 reactable(
   report,
   defaultPageSize = 13,
@@ -417,7 +412,6 @@ reactable(
 Instead adding reference line, bandline can be added by using the `bandline` argument.
 
 ```{r}
-#| code-fold: true
 reactable(
   report,
   defaultPageSize = 13,
@@ -442,7 +436,6 @@ reactable(
 Instead of displaying the values as sparklines, we can display them as sparkbars as shiwn below.
 
 ```{r}
-#| code-fold: true
 reactable(
   report,
   defaultPageSize = 13,
