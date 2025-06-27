@@ -28,7 +28,7 @@ By the end of this hands-on exercise, you will be able to:
 We will be using following R packages.
 
 ```{r}
-pacman::p_load(lubridate, ggthemes, reactable,reactablefmtr, gt, gtExtras, tidyverse,odbc, RODBC, Hmisc, dataui, reactablefmtr, reactable)
+pacman::p_load(lubridate, ggthemes, reactable,reactablefmtr, gt, gtExtras, tidyverse,odbc, RODBC, Hmisc, dataui, remotes)
 ```
 
 -   [tidyverse](https://www.tidyverse.org/) provides a collection of functions for performing data science task such as importing, tidying, wrangling data and visualising data. It is not a single package but a collection of modern R packages including but not limited to [readr](https://readr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/), [dplyr](https://dplyr.tidyverse.org/), [ggplot](https://ggplot2.tidyverse.org/), [tibble](https://tibble.tidyverse.org/), [stringr](https://stringr.tidyverse.org/), [forcats](https://forcats.tidyverse.org/) and [purrr](https://purrr.tidyverse.org/).
@@ -316,7 +316,9 @@ In this section, you will learn how to create interactive information dashboard 
 In order to build an interactive sparklines, we need to install dataui R package by using the code chunk below.
 
 ```{r}
+#| eval: false
 remotes::install_github("timelyportfolio/dataui")
+library (dataui)
 ```
 
 ### 7.1 Plotting interactive sparklines
@@ -338,9 +340,7 @@ reactable(
   columns = list(
     Product = colDef(maxWidth = 200),
     `Monthly Sales` = colDef(
-      cell = function(value) {
-        react_sparkline(value)
-      }
+      cell = react_sparkline(report)
     )
   )
 )
@@ -361,6 +361,7 @@ reactable(
     )
   )
 )
+
 ```
 
 ### 7.3 Adding points and labels
